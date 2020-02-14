@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/meetion.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        .M_Card>ul {
+            height: 650px;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+
+        .M_Card>.activeUl {
+            height: 0;
+            transition: all 0.3s;
+            border: unset;
+        }
+
+        .Flex>li>h3 {
+            cursor: pointer;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 10px;
+
+        }
+
+        .Flex>li>.activeol {
+            border: 1px solid #e5e5e5;
+            border-bottom: unset;
+            color: #333;
+            background: #f7f7f7;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <div class="M_Breadcrumb_" style="background: #fff;margin-bottom: 15px;">
+            [
+            {"name":"生态","link":"javascript:;"}
+            ,{"name":"生态","link":"javascript:;"}
+            ]
+        </div>
+        <div class="" style="width: 100%;margin: 15px 20px;">
+            <p class="M_P_Title" style="margin:10px 0;background: #fff;padding: 15px;"> 生态 System</p>
+        </div>
+        <div class="M_Card" style="margin-left: 20px;height: 780px;overflow: hidden;">
+
+            <ol class="Flex" style="margin-top: 10px;">
+                <li>
+                    <h3 class="activeol" style="margin-left: 20px;"> 路由 Router.js </h3>
+                </li>
+                <li>
+                    <h3> 请求 Request.js </h3>
+                </li>
+                <li>
+                    <h3> 样式 Meetion.css </h3>
+                </li>
+            </ol>
+            <ul class="" style="overflow: hidden;">
+                <li>
+                    <div class="Flex">
+                        <code style="flex: 1;" class="Mcode_js">
+                            // 变量 router 为目录列表 ;<br>
+                            var router = [] <br>
+                            router.push(<br>
+                                {<br>
+                                    name:"首页",  // name:导航名称;<br>
+                                    path:'vivews/home.html', // path:路径;<br>
+                                    icon:"fa fa-home "// icon:字体图标;<br>
+                                },<br>
+                                {<br>
+                                    name:"table表格",<br>
+                                    path:'vivews/table.html',<br>
+                                    icon:"fa fa-table"<br>
+                                },<br>
+                                {<br>
+                                    name:"login模板",<br>
+                                    path:'../login.html',<br>
+                                    icon:"fa fa-bars"<br>
+                                },<br>
+                                {<br>
+                                    name:"404模板",<br>
+                                    path:'../404.html',<br>
+                                    icon:"fa fa-bar-chart"<br>
+                                }<br>
+                            )<br>
+                         
+                        </code>
+                        <code style="flex: 1;;margin-left: 15px;" class="Mcode_js">
+                            // RouterWatcher 是 router 监听;<br>
+                            // RouterWatcher的原理是采用的 Object.defineProperty<br>
+                            // 有兴趣的小盆友可以看看 admin 里的 Router.js<br>
+                            let RouterGuard = new RouterWatcher({<br>
+                                data:{<br>
+                                    // 将本地存储的token 绑定到 data.token上 <br>
+                                    token : localStorage.getItem('token'),<br>
+                                    // 将本地 router 绑定到 data.router上 <br>
+                                    router : router<br>
+                                },<br>
+                                watch:{<br>
+                                    // 当 token 发生变化时 这里会第一时间接受到状态;<br>
+                                    token(newVal,oldVal){<br>
+                                        // 只要 token 发生改变直接跳转到登录页<br>
+                                        location.href = 'vivews/login.html';<br>
+                                    },<br>
+                                    // 当 router 发生变化时 这里会第一时间接受到状态;<br>
+                                    router(newVal,oldVal){<br>
+                                        // 接收新的 router 给它重新赋值<br>
+                                        router = newVal;<br>
+                                    }<br>
+                                }<br>
+                            })
+                            <br>
+                        </code>
+                        <code style="flex: 1;margin-left: 15px;" class="Mcode_js">
+                            // RouterGuard.router 是动态路由的操作 <br>
+                            // 可以通过 RouterGuard.router 重新赋值做为权限判断 <br>
+                            RouterGuard.router = [<br>
+                                {<br>
+                                    name:"home 首页",<br>
+                                    path:'vivews/home.html',<br>
+                                    icon:"fa fa-home "<br>
+                                },<br>
+                                {<br>
+                                    name:"table 表格",<br>
+                                    path:'vivews/table.html',<br>
+                                    icon:"fa fa-table"<br>
+                                },<br>
+                                {<br>
+                                    name:"button 按钮",<br>
+                                    path:'vivews/button.html',<br>
+                                    icon:"fa fa-bandcamp"<br>
+                                }, <br>
+                                {<br>
+                                    name:"tool 工具",<br>
+                                    path:'vivews/tool.html',<br>
+                                    icon:"fa fa-cogs"<br>
+                                } <br>
+                            ]<br>
+                        </code>
+                    </div>
+                </li>
+            </ul>
+            <ul class="activeUl" style="overflow: hidden;">
+                <li>
+                    <div class="Flex">
+                        <code style="flex: 1;" class="Mcode_js">
+                            // Request.js 是进一步封装的 Ajax;<br>
+                            // 优化了 Ajax 操作更加简单方便; <br>
+                            // 声明 Request 对象 <br>
+                            var Request = {}; <br>
+                            // 创建一个 Request.host ;<br>
+                            Request.host = "URL"; <br>
+                            // 他的几种简单请求方式 : 
+                            <br>
+                            <br>
+                            // 1、Request.Get <br>
+                            // api/list 是请求的 url <br>
+                            // param 是请求携带的 参数 <br>
+                            Request.Get('api/list',{ param },{<br>
+                                    res => {<br>
+                                        // res 成功返回的函数 <br>
+                                        console.log(res) <br>
+                                    },<br>
+                                    err => {<br>
+                                        // err 失败返回的函数 <br>
+                                        console.log(err) <br>
+                                    }<br>
+                                } <br>
+                            )<br>
+                        </code>
+                        <code style="flex: 1;margin-left: 15px;" class="Mcode_js">
+                            // 2、Request.Post <br>
+                            // api/list 是请求的 url <br>
+                            // param 是请求携带的 参数 <br>
+                            Request.Post('api/list',{ param },{<br>
+                                    res => {<br>
+                                        // res 成功返回的函数 <br>
+                                        console.log(res) <br>
+                                    },<br>
+                                    err => {<br>
+                                        // err 失败返回的函数 <br>
+                                        console.log(err) <br>
+                                    }<br>
+                                } <br>
+                            )<br>
+                            <br>
+                            // 3、Request.Put <br>
+                            Request.Put('api/list',{ param },{<br>
+                                    res => {<br>
+                                        console.log(res) <br>
+                                    },<br>
+                                    err => {<br>
+                                        console.log(err) <br>
+                                    }<br>
+                                } <br>
+                            )<br>
+                        </code>
+                        <code style="flex: 1;margin-left: 15px;" class="Mcode_js">
+                            // 4、Request.Dele_te <br>
+                            // api/list 是请求的 url <br>
+                            // param 是请求携带的 参数 <br>
+                            Request.Dele_te('api/list',{ param },{<br>
+                                    res => {<br>
+                                        // res 成功返回的函数 <br>
+                                        console.log(res) <br>
+                                    },<br>
+                                    err => {<br>
+                                        // err 失败返回的函数 <br>
+                                        console.log(err) <br>
+                                    }<br>
+                                } <br>
+                            )<br>
+                            <br>
+                            // 5.微信分享 Request.SetShare <br>
+                            Request.SetShare() <br>
+                            // 直接调用相关配置 可以自行去修改 已有模板 <br>
+                            <br>
+                            // Request.js 就到此讲解完毕 推荐大家手动测试 <br>
+                        </code>
+                    </div>
+                </li>
+            </ul>
+            <ul class="activeUl" style="overflow: hidden;">
+                <li>
+                    <div class="Flex">
+                        <code style="flex: 1;" class="Mcode_css">
+                            &lt;!-- Meetion.css 主要是以 class(类名) 为主 --&gt; <br>
+                            &lt;!-- 使用类名，贴近原生 --&gt; <br>
+                            &lt;!-- 先随便写几个个例子吧 --&gt; <br>
+                            <br>
+                            &lt;!-- input  --&gt; <br>
+                            &lt;input type="text" value="" class="M_Ipt M_ipt_D"&gt; <br>
+                            &lt;input type="password" value="" class="M_Ipt M_Ipt_Show"&gt; <br>
+                            <br>
+                            &lt;!-- button  --&gt; <br>
+                            &lt;button class="M_Btn" &gt;Button &lt;/button&gt;<br>
+                            &lt;button class="M_Btn_success" &gt;Button &lt;/button&gt;<br>
+                            <br>
+                            &lt;!-- link  --&gt; <br>
+                            &lt;-a -href="javascript:;" class="M_A_default" &gt; Link &lt;/-a&gt; <br>
+                            &lt;-a -href="javascript:;" class="M_A_success" &gt; Link &lt;/-a&gt; <br>
+                            <br>
+                            &lt;!-- card  --&gt; <br>
+                            &lt;div class="M_Card" &gt; &lt;/div&gt; <br>
+                            <br>
+                            &lt;!-- tag  --&gt; <br>
+                             &lt;span class="M_Tag" &gt;Tag &lt;/span&gt;<br>
+                             &lt;span class="M_Tag_success" &gt;Tag &lt;/span&gt;<br>
+                            <br>
+                             &lt;!-- icon  --&gt; <br>
+                             &lt;-i class="fa fa-cloud-download" &gt; &lt;/-i&gt;<br>
+                             &lt;-i class="fa fa-code" &gt; &lt;/-i&gt;<br>
+                             <br>
+                             &lt;!-- message  --&gt; <br>
+                             &lt;div class="M_Success_Message" &gt;Message&lt;/div&gt; <br>
+                             &lt;div class="M_Error_Message" &gt;Message&lt;/div&gt; <br>
+                        </code>
+                        <code style="flex: 1;margin-left: 15px;" class="Mcode_css ">
+                            &lt;!-- Meetion.css 也是与 Meetion.js 配套使用的 --&gt; <br>
+                            <br>
+                            &lt;!-- message  --&gt; <br>
+                            &lt;!-- html 可以绑定 id 通过点击事件调用 不过我一般不会这样去使用--&gt;<br>
+                            &lt;button class="M_Btn_Success_" id="SuccessMsg"&gt;成功提醒&lt;/button&gt;<br>
+                            &lt;button class="M_Btn_Danger_" id="ErrorMsg"&gt;失败提醒&lt;/button&gt;<br>
+                            &lt;button class="M_Btn_Info_" id="InfoMsg"&gt;信息提醒&lt;/button&gt;<br>
+                            &lt;button class="M_Btn_Warning_" id="WarningMsg"&gt;警告提醒&lt;/button&gt;<br>
+                            <br>
+                            &lt;!-- script 一般我直接会在某个方法里面去触发调用这个函数 --&gt;<br>
+                                showMessage('Success','success',2000);<br>
+                                showMessage('Error','error',2000);<br>
+                                showMessage('Info','info',2000);<br>
+                                showMessage('Warning','warning',2000);<br>
+                            <br>
+                            &lt;!-- dialogue --&gt;<br>
+                            &lt;button class="M_Btn M_Dialogue_C"&gt;居中对话框 &lt;/button&gt;<br>
+                            &lt;div class="M_Dialogue_Center"&gt;&lt;/div&gt;<br>
+                            <br>
+                            &lt;!-- 具体配置参数请看 Meetion-Ui 官方文档 --&gt;<br>
+                        </code>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+<script src="../src/meetion.js"></script>
+<script>
+    var tab1 = $('.Flex>li>h3')
+    for (let z = 0; z < tab1.length; z++) {
+        tab1Fun(z)
+    }
+    function tab1Fun(z) {
+        $(`.Flex>li>h3:eq(${z})`).click(function () {
+            if (!$(`.Flex>li>h3:eq(${z})`).hasClass('activeol')) {
+                $(`.Flex>li>h3`).removeClass('activeol')
+                $(`.Flex>li>h3:eq(${z})`).addClass('activeol')
+                var tab2 = $('.M_Card>ul')
+                $('.M_Card>ul').addClass('activeUl')
+                $(`.M_Card>ul:eq(${z})`).removeClass('activeUl')
+            }
+        })
+    }
+</script>
+<script src="../src/util/code_html.js"></script>
+<script src="../src/util/code.js"></script>
+
+</html>

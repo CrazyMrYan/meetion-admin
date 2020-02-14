@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/meetion.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        .M_card_item {
+            flex: 1;
+            height: 100px;
+            margin-right: 15px;
+        }
+
+        .M_card_item {
+            text-align: center;
+        }
+
+        .M_card_item>div {
+            border-radius: 5px;
+        }
+
+        .M_card_item>div>i {
+            font-size: 30px;
+            line-height: 60px;
+            color: #fff;
+        }
+
+        .M_card_item>div>h2 {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .M_card_item>div>div {
+            text-align: center;
+        }
+
+        .New_table {
+            padding-right: 20px;
+        }
+
+        .New_table>li {
+            height: 35px;
+            font-size: 14px;
+            line-height: 35px;
+            border-top: 1px dotted #e5e5e5;
+            cursor: pointer;
+        }
+
+        .New_table>li:hover {
+            background: #f8f8f8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <div class="M_Breadcrumb_" style="background: #fff;margin-bottom: 15px;">
+            [
+            {"name":"表格","link":"javascript:;"}
+            ,{"name":"表格","link":"javascript:;"}
+            ]
+        </div>
+        <div class="" style="width: 100%;height:860px; margin: 15px 20px;">
+            <p class="M_P_Title" style="margin:10px 0;background: #fff;padding: 15px;"> 表格 Table</p>
+            <div class="M_Card" style="height: 790px;">
+                <ul class="M_table M_Table_Array" style="font-size: 14px;padding-right: 15px;">
+                    <li class="T"></li>
+                    <li class="T">
+                    </li>
+                    <li class="T">
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 获取表格表头元素
+    var headData = $('.M_Table_Array>li:eq(0)');
+    // 获取表格每一项
+    var tableData = $('.M_Table_Array>li:eq(1)');
+    // 表格配置
+    var tableconfig = $('.M_Table_Array>li:eq(2)');
+    var data3 = [{
+        name: 'id', style: "max-width:100px;"
+    }]
+    // 表头数据
+    var data1 = ["id", "name", "性别", "说明", "类型", "地址", "操作"]
+    // 表格数据
+    var data2 = [
+        { id: "001", name: "Mr.Yan", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "003", name: "张三", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "005", name: "李四", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "008", name: "王五", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "078", name: "赵六", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "088", name: "孙七", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "089", name: "田八", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "005", name: "李四", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "008", name: "王五", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "078", name: "赵六", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "088", name: "孙七", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "089", name: "田八", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" },
+        { id: "102", name: "Mr.Yan", "性别": "男", "说明": "Web菜鸡", "类型": "丑", "地址": "广东省广州市天河区", "操作": "b" }
+    ]
+    // 核心步骤 把变量“data1”，“data2” 增加到表头和表格中
+    headData.text(`${JSON.stringify(data1)}`)
+    tableData.text(`${JSON.stringify(data2)}`)
+    tableconfig.text(`${JSON.stringify(data3)}`)
+</script>
+<script src="../src/meetion.js"></script>
+<script type="text/javascript">
+    $('.M_Headitem_Blue').css("background", '#e5e5e5')
+    $('.M_Headitem_Blue').css("border", 'unset')
+    $('.M_Tritem > div').css("border-right", 'unset')
+    $('.M_Headitem_Blue > div').css('color', "#666")
+    $('.M_Tritem').css("border-left", 'unset')
+</script>
+
+</html>
