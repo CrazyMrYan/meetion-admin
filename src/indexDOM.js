@@ -21,7 +21,6 @@ $('#app').append(` <div class="M_Dialogue_Center">
 </div>`);
 $('#app').append(`<div class="tagsbox M_Card" style="z-index:2;">
 			</div>`);
-$('#app>.tagsbox').append(`<span class="M_Tag M_Tag_D" style="margin: 12px 0 0 10px;font-size:14px;">首页</span>`)
 $('#app').append(`<div class="M_Img" style="position: fixed;width: 45px;height: 45px;top: 0;right: 0; z-index: 2;">
 <img src="src/images/head.jpg" class="M_Img M_Dialogue_C" title="美丽的不是这个世界，
 而是你看这个世界的眼神。
@@ -36,3 +35,16 @@ $(`.Dialogue_C>.M_Btn_Default`).click(function (e) {
 $(`.Dialogue_C>.M_Btn_Warning`).click(function (e) { 
     showMessage('您取消了退出','warning',2000);
 });
+$('#app>.tagsbox').append(`<input type="text" style="height: 24px;width: 180px;position: relative;
+    top: -4px;" value="" placeholder="请输入搜索内容" class="M_Ipt"><button class="M_Btn" style="
+    height: 34px;
+    vertical-align: middle;
+    position: relative;
+    top: -4px;
+	left: -10px;
+	border-radius: 0 8px 8px 0;
+	color: #fff;
+    background: #409eff;
+    border-color: #409eff;
+"><i class="fa fa-search fa-1x">
+</i> Search</button>`)

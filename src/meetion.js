@@ -30,110 +30,70 @@ class watchert{
         });
     }
 }
+location.href.replace(/#/g, "")
+
 var tags = [];
-if(this.router){
-	
-	$('#app').append(`<ul style="height:${ document.body.clientWidth}px" class="M_nav">
-		</ul>`)
-
-	$('#app').append(`<div style="height:${window.screen.height-145}px" class="htmlbox"></div>`)
-	for(let z =0 ;z <router.length;z++){
-		$('#app>ul').append(`<li><a style="min-width: 50px;text-align: left;" MAhref="${router[z].path}"> <i style="min-width: 50px;text-align: center;" class="${router[z].icon}"></i>
-		 ${router[z].name}</a></li>`);
-		
-		let children = router[z].children
-			$('#app>.htmlbox').append(`<iframe src="${router[z].path}" frameborder="0"  scrolling="No" leftmargin="0"
-			topmargin="0"></iframe>`);
-
-	}
-	$('#app>.htmlbox>iframe:eq(0)').css("display","block");
-	$(`.M_nav>li>a:eq(0)`).css('color','#2d8cf0');
-	$(`.M_nav>li>a:eq(0)`).css('background','#000c17');
-	tags.push({"path":router[0].path,"name":router[0].name});
-	var a = router[0].path.replace(/.html/g, "");
-	window.location.href = "#/"+a;
-	
-}
-
-var M_navList = $('.M_nav');
-
-for(let z= 0; z<M_navList.length;z++){
-	M_navListF(z);
-}
-function M_navListF (z){
-	$(`.M_nav:eq(${z})>li>a`).click(function(e){
-		var href = e.target.getAttribute("MAhref");
-		var name = e.target.innerText;
-		var a = href.replace(/.html/g, "");
-		window.location.href = "#/"+a;
-		getblock(href);
-		for(let z = 0 ; z <tags.length;z++){
-			var name = name.trim();
-			var pname = tags[z].name.trim();
-			pFn(name,pname,href);
-			return
-		}
-	})
-}
-function pFn(name,pname,href){
-	name.trim();
-	pname.trim();
-	
-	if(name == pname ){
-		return
-	}else{
-		tags.push({"path":href,"name":name});
-	   
-	   let obj = {};
-	   let peon = tags.reduce((cur,next) => {
-		   obj[next.name] ? "" : obj[next.name] = true && cur.push(next);
-		   return cur;
-	   },[]) 
-	   tag.a = peon;
-	}
-}
-
-
 let tag = new watchert({
 	data: {
 		a: tags,
 	},
 	watch: {
 		a(newVal, oldVal) {
+
 			if(newVal.length == 0){
 				$('#app>.tagsbox').remove()
 			}
-			$('.tagsbox').empty()
-			$('#app > .htmlbox').css('margin-top','60px')
-			for(let z  =0 ; z<newVal.length;z++){
-				$('.tagsbox').append(`<span class="M_Tag M_Tag_D" style="margin: 12px 0 0 10px;font-size:14px;" link="${newVal[z].path}">${newVal[z].name}</span>`)
-			}
+			// $('.tagsbox').empty()
+			// for(let z  =0 ; z<tag.a.length;z++){
+			// 	$('.tagsbox').append(`<span class="M_Tag M_Tag_D" style="margin: 12px 0 0 10px;font-size:14px;" link="${newVal[z].path}"><i style="width: 20px;font-size: 14px;text-align: left;" class="fa fa-circle-o "></i><a herf=
+			// 	"javascript:;" class="M_A_Default">${newVal[z].name}</a></span>`)
+			// }
 			let M_Tag_D = $('.M_Tag_D');
 			for(let z = 0 ; z<M_Tag_D.length;z++){
 				M_Tag_DF(z);
 			}
+			var thisdata = this.$data.a
 			function M_Tag_DF(z){
 				$('.M_Tag_D:eq('+z+')').append(`<i style="position: relative;width: 20px;font-size:10px; text-align: right;" class="fa fa-close M_Tag_DF"></i>`)
-				$('.M_Tag_D:eq('+z+')>i').click(function(){
+				$('.M_Tag_D:eq('+z+')>.fa-close').click(function(){
+					thisdata.splice(z,1)
 					$('.M_Tag_D:eq('+z+')').css('display','none')
 				})
-				$('.M_Tag_D:eq('+z+')').click(function(e){
-				var ahref = $('.M_Tag_D:eq('+z+')').attr("link")
-					var ifarr = $('#app>.htmlbox>iframe');
-					for(let z =0 ; z<ifarr.length;z++){
-						if($(`.htmlbox>iframe:eq(${z})`).attr('src') == ahref){
-							$(`.htmlbox>iframe:eq(${z})`).css('display','block');
-							$(`.M_nav>li>a:eq(${z})`).css('color','#2d8cf0');
-							$(`.M_nav>li>a:eq(${z})`).css('background','#000c17');
-							var a = ahref.replace(/.html/g, "")
-							window.location.href = "#/"+a;
-						}else{
-							$(`.htmlbox>iframe:eq(${z})`).css('display','none');
-							$(`.M_nav>li>a:eq(${z})`).css('color','#fff');
-							$(`.M_nav>li>a:eq(${z})`).css('background','#001529');
-						}
-				
+
+				$('.M_Tag_D:eq('+z+')>a').click(function(e){
+					loadinglock()
+					// for(let x = 0; x<)
+					// $(`.dbactive`).append(`
+					// 	<h1>hjhdasjkahdkj</h1>
+					// `)
+					$('.tab_right>li').empty()
+					var ahref = $('.M_Tag_D:eq('+z+')').attr("link")
+					
+					$(`.dbactive`).append(`
+								<iframe src="${ahref}" frameborder="0" leftmargin="0" style="min-height: 882px; width:100%"
+									topmargin="0"></iframe>
+								`)
+								$('.fa-circle').addClass('fa-circle-o').removeClass('fa-circle')
+					$('.M_Tag_D:eq('+z+')>.fa-circle-o').addClass('fa-circle').removeClass('fa-circle-o')
+					let navlist_Li = $('.nav-left-container-small>li>a')
+					for(let b = 0 ;b<navlist_Li.length;b++){
+						
 					}
+					// var ifarr = $('#app>.htmlbox>iframe');
+					// for(let z =0 ; z<ifarr.length;z++){
+					// 	if($(`.htmlbox>iframe:eq(${z})`).attr('src') == ahref){
+					// 		$(`.htmlbox>iframe:eq(${z})`).css('display','block');
+					// 		$(`.M_nav>li>a:eq(${z})`).css('color','#2d8cf0');
+					// 		$(`.M_nav>li>a:eq(${z})`).css('background','#000c17');
+					// 		var a = ahref.replace(/.html/g, "")
+					// 		window.location.href = "#/"+a;
+					// 	}else{
+					// 		$(`.htmlbox>iframe:eq(${z})`).css('display','none');
+					// 		$(`.M_nav>li>a:eq(${z})`).css('color','#fff');
+					// 		$(`.M_nav>li>a:eq(${z})`).css('background','#001529');
+					// 	}
+				
+					// }
 				})
 			}
 		}
@@ -144,21 +104,182 @@ function tagsbox(newVal){
 	for(let z  =0 ; z<newVal.length;z++){
 		$('.tagsbox').append(`<div>${z}</div>`)
 	}
-}	
-function getblock(ahref){
-	var ifarr = $('#app>.htmlbox>iframe');
-	for(let z =0 ; z<ifarr.length;z++){
-		if($(`.htmlbox>iframe:eq(${z})`).attr('src') == ahref){
-			$(`.htmlbox>iframe:eq(${z})`).css('display','block');
-			$(`.M_nav>li>a:eq(${z})`).css('color','#2d8cf0');
-			$(`.M_nav>li>a:eq(${z})`).css('background','#000c17');
-		}else{
-			$(`.htmlbox>iframe:eq(${z})`).css('display','none');
-			$(`.M_nav>li>a:eq(${z})`).css('color','#fff');
-			$(`.M_nav>li>a:eq(${z})`).css('background','#001529');
+}
+
+if(this.router){
+	$('#app').append(`<div class="Flex htmlbox" style=" width:${ document.body.clientWidth }px; height:900px"></div>`)
+	$('#app').append(`<ul class="nav-left-container"></ul>`)
+	$('#app>.Flex').append(`<ol class="tab_right" style="flex: 1;"></ol>`)
+	for(let z =0 ;z<router.length;z++){
+		$('.nav-left-container').append(`<li>
+			<a href="javascript:;">
+				<span class="${router[z].icon} f12" aria-hidden="true"></span>
+				<span>${router[z].name}</span>
+				<span class="fa fa-angle-right f12 fr" aria-hidden="true"></span>
+			</a>
+			<ul class="nav-left-container-small">
+            </ul>
+		</li>`)
+		for(let x =0 ;x<router[z].children.length;x++){
+			$('.nav-left-container-small:eq('+z+')').append(`
+				<li MAhref="${router[z].children[x].path}">
+					<a class="J_menuItem" path="${router[z].children[x].path}" pathname="${router[z].children[x].name}" href="javascript:;">${router[z].children[x].name}</a>
+				</li>
+			`)
+			$('.tab_right').append(`<li >
+			</li>`)
+			$('.tab_right > li:eq(0)').addClass('dbactive')
+			
 		}
+	}
+	$('.nav-left-container>li:eq(0)').addClass('active')
+	$('.nav-left-container-small:eq(0)>li:eq(0)').addClass('active')
+	tags.push({"path":router[0].children[0].path,"name":router[0].children[0].name});
+	tag.a = tags;
+	$(`.dbactive`).append(`
+					<iframe src="${router[0].children[0].path}" frameborder="0" leftmargin="0" style="min-height: 882px; width:100%"
+						topmargin="0"></iframe>
+					`)
+	// $('#app>.tagsbox').append(`<span class="M_Tag M_Tag_D" style="margin: 12px 0 0 10px;font-size:14px;">
+	// <i style="width: 20px;font-size: 14px;text-align: left;" class="fa fa-circle-o "></i>${router[0].children[0].name}</span>`)
+
+	
+
+	var datalistlength = $('.nav-left-container-small>li')
+	for(let z =0 ;z<datalistlength.length;z++){
+		addClassDb(z)
+		M_navListF(z);
 
 	}
+	function addClassDb(z){
+		$('.nav-left-container-small>li:eq('+z+')').click(function(){
+			$(`.nav-left-container-small>li`).removeClass('active')
+			$(`.tab_right>li`).removeClass('dbactive')
+
+			if (!$(`.tab_right>li:eq(${z})`).hasClass('dbactive')) {
+				$(`.tab_right>li:eq(${z})`).addClass('dbactive')
+			}
+			// console.log($('.nav-left-container-small>li:eq('+z+')').text())
+			// $(`.dbactive`).append(`
+			// 		<iframe src="${$('.M_Tag_D:eq('+z+')').attr("link")}" frameborder="0"  scrolling="No" leftmargin="0"
+			// 			topmargin="0"></iframe>
+			// 		`)
+		})
+	}
+	
+	// $('#app').append(`<ul style="height:${ document.body.clientWidth}px" class="M_nav">
+	// 	</ul>`)
+	// for(let z =0 ;z <router.length;z++){
+	// 	$('#app>ul').append(`<li><a style="min-width: 50px;text-align: left;" MAhref="${router[z].path}"> <i style="min-width: 50px;text-align: center;" class="${router[z].icon}"></i>
+	// 	 ${router[z].name}</a></li>`);
+		
+	// 	let children = router[z].children
+	// 		$('#app>.htmlbox').append(`<iframe src="${router[z].path}" frameborder="0"  scrolling="No" leftmargin="0"
+	// 		topmargin="0"></iframe>`);
+	// }
+	// $('#app>.htmlbox>iframe:eq(0)').css("display","block");
+	// $(`.M_nav>li>a:eq(0)`).css('color','#2d8cf0');
+	// $(`.M_nav>li>a:eq(0)`).css('background','#000c17');
+	// tags.push({"path":router[0].path,"name":router[0].name});
+	// var a = router[0].path.replace(/.html/g, "");
+	// window.location.href = "#/"+a;
+}
+// function GetAddhtml(z){
+	
+// 	$('.tab_right > .dbactive').append(
+// 		`<iframe src="${z}" frameborder="0" leftmargin="0" style="width: 100%;
+// 		min-height: 860px;"
+// 		topmargin="0"></iframe>
+// 	`);
+// }
+// var M_navList = $('.M_nav');
+
+// for(let z= 0; z<M_navList.length;z++){
+// 	M_navListF(z);
+// }
+$(".htmlbox").append(`
+		<div 
+		class="loadingc"
+		style="width: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		height: 100%;
+		display: none;
+		background: rgba(255,255,255,0.8);
+		z-index: 3;">
+		<div style="text-align: center;
+		margin-top: 400px;
+		color: #409eff;"><i class="fa fa-circle-o-notch fa-pulse"></i> loading... </div>
+		</div>
+	`)
+function loadinglock(){
+	$('.loadingc').css("display","block")
+
+	setTimeout(function () {
+		$('.loadingc').css("display","none")
+	}, 500)
+}
+function M_navListF (z){
+	$('.nav-left-container-small>li:eq('+z+')').click(function(e){
+		var href = $('.nav-left-container-small>li:eq('+z+')').attr("MAhref")
+		var name = $('.nav-left-container-small>li:eq('+z+')>a').attr("pathname");
+		var path = href.replace(/.html/g, "");
+
+		window.location.href = "#/" + path;
+		getblock(href);
+		loadinglock()
+		for(let z = 0 ; z <tags.length;z++){
+			var name = name.trim();
+			var pname = tags[z].name.trim();
+			pFn(name,pname,href);
+			return
+		}
+	})
+}
+function pFn(name,pname,href){
+	
+	$('.tab_right>li').empty()
+	
+		$(`.dbactive`).append(`
+					<iframe src="${href}" frameborder="0" leftmargin="0" style="min-height: 882px; width:100%"
+						topmargin="0"></iframe>
+					`)
+		
+	
+	name.trim();
+	pname.trim();
+	if(name == pname ){
+		return
+	}else{
+	tags.push({"path":href,"name":name});
+	tag.a = tags
+	   let obj = {};
+	   let peon = tags.reduce((cur,next) => {
+		   obj[next.name] ? "" : obj[next.name] = true && cur.push(next);
+		   return cur;
+	   },[]) 
+	   tag.a = peon;
+	}
+
+}
+
+
+	
+function getblock(ahref){
+	for(let z =0 ;z<datalistlength.length;z++){
+	}
+	// for(let z =0 ; z<ifarr.length;z++){
+	// 	if($(`.htmlbox>iframe:eq(${z})`).attr('src') == ahref){
+	// 		$(`.htmlbox>iframe:eq(${z})`).css('display','block');
+	// 		$(`.M_nav>li>a:eq(${z})`).css('color','#2d8cf0');
+	// 		$(`.M_nav>li>a:eq(${z})`).css('background','#000c17');
+	// 	}else{
+	// 		$(`.htmlbox>iframe:eq(${z})`).css('display','none');
+	// 		$(`.M_nav>li>a:eq(${z})`).css('color','#fff');
+	// 		$(`.M_nav>li>a:eq(${z})`).css('background','#001529');
+	// 	}
+	// }
 }
 
 let M_Ipt_Show = $('.M_Ipt_Show');
@@ -640,8 +761,8 @@ for(let z = 0 ; z<M_Tag_D.length;z++){
 	M_Tag_DF(z);
 }
 function M_Tag_DF(z){
-	$('.M_Tag_D:eq('+z+')').append(`<i style="position: relative;font-size:10px;" class="fa fa-close M_Tag_DF"></i>`);
-	$('.M_Tag_D:eq('+z+')>i').click(function(){
+	$('.M_Tag_D:eq('+z+')').append(`<i style="position: relative;font-size:10px;margin-left: 10px;text-align: right;" class="fa fa-close M_Tag_DF"></i>`);
+	$('.M_Tag_D:eq('+z+')>.fa-close').click(function(){
 		$('.M_Tag_D:eq('+z+')').css('display','none');
 	})
 }
@@ -651,7 +772,7 @@ for(let z = 0 ; z<M_Tag_success_D.length;z++){
 }
 function M_Tag_success_DF(z){
 	$('.M_Tag_success_D:eq('+z+')').append(`<i style="position: relative;font-size:10px;" class="fa fa-close M_Tag_success_DF"></i>`);
-	$('.M_Tag_success_D:eq('+z+')>i').click(function(){
+	$('.M_Tag_success_D:eq('+z+')>.fa-close').click(function(){
 		$('.M_Tag_success_D:eq('+z+')').css('display','none')
 	})
 }
@@ -661,7 +782,7 @@ for(let z = 0 ; z<M_Tag_info_D.length;z++){
 }
 function M_Tag_info_DF(z){
 	$('.M_Tag_info_D:eq('+z+')').append(`<i style="position: relative;font-size:10px;" class="fa fa-close M_Tag_info_DF"></i>`);
-	$('.M_Tag_info_D:eq('+z+')>i').click(function(){
+	$('.M_Tag_info_D:eq('+z+')>.fa-close').click(function(){
 		$('.M_Tag_info_D:eq('+z+')').css('display','none');
 	})
 }
@@ -728,7 +849,7 @@ function M_Breadcrumb_F(z){
 			$('.M_Breadcrumb_:eq('+z+')').append(`
 				<span>
 					<a href="${M_Breadcrumb_Fdata[x].link}" >${M_Breadcrumb_Fdata[x].name}</a>
-				</span><i class="fa fa-angle-right"></i>
+				</span> /
 			`);
 		}else{
 			$('.M_Breadcrumb_:eq('+z+')').append(`

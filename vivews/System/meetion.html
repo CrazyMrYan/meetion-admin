@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../src/meetion.css">
+    <script src="../../src/util/jquery.min3.3.1.js"></script>
+
+
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <div class="M_Breadcrumb_" style="background: #fff;margin-bottom: 15px;">
+            [
+            {"name":"生态系统","link":"javascript:;"}
+            ,{"name":"Meetion.css","link":"javascript:;"}
+            ]
+        </div>
+        <div class="" style="width: 100%;margin: 15px 0;">
+            <p class="M_P_Title" style="margin:10px 0;background: #fff;padding: 15px;">Meetion.css</p>
+        </div>
+        <div class="M_Card" style="height: 700px;overflow: hidden;">
+            <ul class="activeUl" style="overflow: hidden;">
+                <li>
+                    <div class="Flex">
+                        <code style="flex: 1;" class="Mcode_css">
+                            &lt;!-- Meetion.css 主要是以 class(类名) 为主 --&gt; <br>
+                            &lt;!-- 使用类名，贴近原生 --&gt; <br>
+                            &lt;!-- 先随便写几个个例子吧 --&gt; <br>
+                            <br>
+                            &lt;!-- input  --&gt; <br>
+                            &lt;input type="text" value="" class="M_Ipt M_ipt_D"&gt; <br>
+                            &lt;input type="password" value="" class="M_Ipt M_Ipt_Show"&gt; <br>
+                            <br>
+                            &lt;!-- button  --&gt; <br>
+                            &lt;button class="M_Btn" &gt;Button &lt;/button&gt;<br>
+                            &lt;button class="M_Btn_success" &gt;Button &lt;/button&gt;<br>
+                            <br>
+                            &lt;!-- link  --&gt; <br>
+                            &lt;-a -href="javascript:;" class="M_A_default" &gt; Link &lt;/-a&gt; <br>
+                            &lt;-a -href="javascript:;" class="M_A_success" &gt; Link &lt;/-a&gt; <br>
+                            <br>
+                            &lt;!-- card  --&gt; <br>
+                            &lt;div class="M_Card" &gt; &lt;/div&gt; <br>
+                            <br>
+                            &lt;!-- tag  --&gt; <br>
+                             &lt;span class="M_Tag" &gt;Tag &lt;/span&gt;<br>
+                             &lt;span class="M_Tag_success" &gt;Tag &lt;/span&gt;<br>
+                            <br>
+                             &lt;!-- icon  --&gt; <br>
+                             &lt;-i class="fa fa-cloud-download" &gt; &lt;/-i&gt;<br>
+                             &lt;-i class="fa fa-code" &gt; &lt;/-i&gt;<br>
+                             <br>
+                        
+                        </code>
+                        <code style="flex: 1;margin-left: 15px;" class="Mcode_css ">
+                            &lt;!-- message  --&gt; <br>
+                            &lt;div class="M_Success_Message" &gt;Message&lt;/div&gt; <br>
+                            &lt;div class="M_Error_Message" &gt;Message&lt;/div&gt; <br>
+                            &lt;!-- Meetion.css 也是与 Meetion.js 配套使用的 --&gt; <br>
+                            <br>
+                            &lt;!-- message  --&gt; <br>
+                            &lt;!-- html 可以绑定 id 通过点击事件调用 不过我一般不会这样去使用--&gt;<br>
+                            &lt;button class="M_Btn_Success_" id="SuccessMsg"&gt;成功提醒&lt;/button&gt;<br>
+                            &lt;button class="M_Btn_Danger_" id="ErrorMsg"&gt;失败提醒&lt;/button&gt;<br>
+                            &lt;button class="M_Btn_Info_" id="InfoMsg"&gt;信息提醒&lt;/button&gt;<br>
+                            &lt;button class="M_Btn_Warning_" id="WarningMsg"&gt;警告提醒&lt;/button&gt;<br>
+                            <br>
+                            &lt;!-- script 一般我直接会在某个方法里面去触发调用这个函数 --&gt;<br>
+                                showMessage('Success','success',2000);<br>
+                                showMessage('Error','error',2000);<br>
+                                showMessage('Info','info',2000);<br>
+                                showMessage('Warning','warning',2000);<br>
+                            <br>
+                            &lt;!-- dialogue --&gt;<br>
+                            &lt;button class="M_Btn M_Dialogue_C"&gt;居中对话框 &lt;/button&gt;<br>
+                            &lt;div class="M_Dialogue_Center"&gt;&lt;/div&gt;<br>
+                            <br>
+                            &lt;!-- 具体配置参数请看 Meetion-Ui 官方文档 --&gt;<br>
+                        </code>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+<script src="../../src/meetion.js"></script>
+<script>
+
+</script>
+<script src="../../src/util/code_html.js"></script>
+<script src="../../src/util/code.js"></script>
+
+</html>

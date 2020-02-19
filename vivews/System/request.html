@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../src/meetion.css">
+    <script src="../../src/util/jquery.min3.3.1.js"></script>
+
+
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <div class="M_Breadcrumb_" style="background: #fff;margin-bottom: 15px;">
+            [
+            {"name":"生态系统","link":"javascript:;"}
+            ,{"name":"Request","link":"javascript:;"}
+            ]
+        </div>
+        <div class="" style="width: 100%;margin: 15px 0;">
+            <p class="M_P_Title" style="margin:10px 0;background: #fff;padding: 15px;"> Request.js</p>
+        </div>
+        <div class="M_Card" style="height: 700px;overflow: hidden;">
+
+
+            <ul class="activeUl" style="overflow: hidden;">
+                <li>
+                    <div class="Flex">
+                        <code style="flex: 1;" class="Mcode_js">
+                            // Request.js 是进一步封装的 Ajax;<br>
+                            // 优化了 Ajax 操作更加简单方便; <br>
+                            // 声明 Request 对象 <br>
+                            var Request = {}; <br>
+                            // 创建一个 Request.host ;<br>
+                            Request.host = "URL"; <br>
+                            // 他的几种简单请求方式 : 
+                            <br>
+                            <br>
+                            // 1、Request.Get <br>
+                            // api/list 是请求的 url <br>
+                            // param 是请求携带的 参数 <br>
+                            Request.Get('api/list',{ param },{<br>
+                                    res => {<br>
+                                        // res 成功返回的函数 <br>
+                                        console.log(res) <br>
+                                    },<br>
+                                    err => {<br>
+                                        // err 失败返回的函数 <br>
+                                        console.log(err) <br>
+                                    }<br>
+                                } <br>
+                            )<br>
+                        </code>
+                        <code style="flex: 1;margin-left: 15px;" class="Mcode_js">
+                            // 2、Request.Post <br>
+                            // api/list 是请求的 url <br>
+                            // param 是请求携带的 参数 <br>
+                            Request.Post('api/list',{ param },{<br>
+                                    res => {<br>
+                                        // res 成功返回的函数 <br>
+                                        console.log(res) <br>
+                                    },<br>
+                                    err => {<br>
+                                        // err 失败返回的函数 <br>
+                                        console.log(err) <br>
+                                    }<br>
+                                } <br>
+                            )<br>
+                            <br>
+                            // 3、Request.Put <br>
+                            Request.Put('api/list',{ param },{<br>
+                                    res => {<br>
+                                        console.log(res) <br>
+                                    },<br>
+                                    err => {<br>
+                                        console.log(err) <br>
+                                    }<br>
+                                } <br>
+                            )<br>
+                        </code>
+                        <code style="flex: 1;margin-left: 15px;" class="Mcode_js">
+                            // 4、Request.Dele_te <br>
+                            // api/list 是请求的 url <br>
+                            // param 是请求携带的 参数 <br>
+                            Request.Dele_te('api/list',{ param },{<br>
+                                    res => {<br>
+                                        // res 成功返回的函数 <br>
+                                        console.log(res) <br>
+                                    },<br>
+                                    err => {<br>
+                                        // err 失败返回的函数 <br>
+                                        console.log(err) <br>
+                                    }<br>
+                                } <br>
+                            )<br>
+                            <br>
+                            // 5.微信分享 Request.SetShare <br>
+                            Request.SetShare() <br>
+                            // 直接调用相关配置 可以自行去修改 已有模板 <br>
+                            <br>
+                            // Request.js 就到此讲解完毕 推荐大家手动测试 <br>
+                        </code>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+<script src="../../src/meetion.js"></script>
+<script>
+
+</script>
+<script src="../../src/util/code_html.js"></script>
+<script src="../../src/util/code.js"></script>
+
+</html>

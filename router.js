@@ -2,24 +2,14 @@
 var router = []
 router.push(
     {
-        name:"首页",
-        path:'vivews/home.html',
-        icon:"fa fa-home "
-    },
-    {
-        name:"table表格",
-        path:'vivews/table.html',
-        icon:"fa fa-table",
-    },
-    {
-        name:"login模板",
-        path:'../login.html',
-        icon:"fa fa-bars",
-    },
-    {
-        name:"404模板",
-        path:'../404.html',
-        icon:"fa fa-bar-chart"
+        name:"控制台",
+        icon:"fa fa-home ",
+        children:[
+            {
+                name:"首页",
+                path:'vivews/home.html',
+            }
+        ]
     }
 )
 // router 监听器
@@ -75,26 +65,76 @@ let routerGuard = new RouterWatcher({
 if(localStorage.getItem('token') === 'a66abb5684c45962d887564f08346e8d'){
     routerGuard.router = [
         {
-            name:"home 首页",
-            path:'vivews/home.html',
-            icon:"fa fa-home "
-        },
-        {
-            name:"table 表格",
-            path:'vivews/table.html',
-            icon:"fa fa-table",
+            name:"控制台",
+            icon:"fa fa-home ",
+            children:[
             
+                {
+                    name:"首页",
+                    path:'vivews/home.html',
+                }
+            ]
         },
         {
-            name:"button 按钮",
-            path:'vivews/button.html',
-            icon:"fa fa-bandcamp",
-        }, 
+            name:"组件",
+            icon:"fa fa-table",
+            children:[
+                {
+                    name:"卡片",
+                    path:'vivews/assembly/card.html',
+                },
+                {
+                    name:"折叠面板",
+                    path:'vivews/assembly/folding-panel.html',
+                },
+                {
+                    name:"选项卡",
+                    path:'vivews/assembly/tab.html',
+                },
+                {
+                    name:"按钮",
+                    path:'vivews/assembly/button.html',
+                },
+                {
+                    name:"模态框",
+                    path:'vivews/assembly/dialogue.html',
+                },
+                {
+                    name:"表单元素",
+                    path:'vivews/assembly/input.html',
+                },
+                {
+                    name:"表格",
+                    path:'vivews/assembly/table.html',
+                },
+                {
+                    name:"开关",
+                    path:'vivews/assembly/button.html',
+                },
+                {
+                    name:"分页",
+                    path:'vivews/assembly/button.html',
+                }
+            ]
+        },
         {
-            name:"system 生态",
-            path:'vivews/System.html',
+            name:"生态系统",
             icon:"fa fa-cogs",
-        }, 
+            children:[
+                {
+                    name:"Router",
+                    path:'vivews/System/router.html',
+                },
+                {
+                    name:"Request",
+                    path:'vivews/System/request.html',
+                },
+                {
+                    name:"Meetion",
+                    path:'vivews/System/meetion.html',
+                },
+            ]
+        }
     ]
 }else if(localStorage.getItem('token')==''|| localStorage.getItem('token') == undefined || localStorage.getItem('token') ==null){
     // 判断非法修改token

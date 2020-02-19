@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meetion-Login</title>
     <link rel="stylesheet" href="../src/meetion.css">
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../src/util/jquery.min3.3.1.js"></script>
+
+
+    <link rel=icon href="../favicon.ico">
     <style>
         .body {
             background-image: url("../src/images/LOGINbanner.jpg");
@@ -24,8 +27,8 @@
     <div class="body">
         <div class="M_Login M_Card">
             <div style="overflow: hidden;height: auto;" class="GetLogin">
-                <div style="width: 40px;margin: 20px auto;">
-                    <img src="../favicon.ico" alt="Meetion-Ui">
+                <div style="width: 50px;margin: 20px auto;">
+                    <img src="../src/images/logon.png" alt="Meetion-Ui">
                 </div>
                 <div>
                     <div style="margin:8px auto 15px auto; font-size: 14px;padding-left: 20.5%;">
@@ -49,7 +52,7 @@
                 </div>
             </div>
             <div style="overflow: hidden;height: 0;" class="GetLogin1">
-                <div style="width: 40px;margin: 20px auto;">
+                <div style="width: 50px;margin: 20px auto;">
                     <img src="../favicon.ico" alt="Meetion-Ui">
                 </div>
                 <div>
@@ -79,7 +82,6 @@
 <script src="../src/meetion.js"></script>
 <script src="../src/util/md5.js"></script>
 <script>
-    // localStorage.removeItem('')
     (function () {
         window.localStorage.clear()
         showMessage('已经安全清除了您的数据', 'warning', 2000);
@@ -170,6 +172,7 @@
             GetLogin(loginInfo)
         }
     })
+
 </script>
 
 </html>
