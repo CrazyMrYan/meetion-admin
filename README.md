@@ -10,6 +10,7 @@
 <p><code> git clone https://github.com/CrazyMrYan/meetion-admin </code></p>
 <p>Download</p>
 <p><a href="https://github.com/CrazyMrYan/meetion-admin/archive/master.zip">meetion-admin-master.zip</a></p>
+- [在线预览](https://panjiachen.github.io/vue-element-admin)
 <h2>Preview :bell:</h2>
 <p><a href="http://crazy.lovemysoul.vip/meetion-admin">在线预览 meetion-admin</a></p>
 <p><a href="http://crazy.lovemysoul.vip/">在线文档 介绍</a></p>
