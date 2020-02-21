@@ -19,7 +19,7 @@
 - [国内访问文档](http://crazy.lovemysoul.vip) 文档（方便没翻墙的用户查看）
 
 <p align="center">
-  <img width="400" src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/src/home.png">
+  <img src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/src/home.png">
 </p>
 
 <p>If you like, please give me a star :star:</p>
