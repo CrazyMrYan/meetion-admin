@@ -11,6 +11,19 @@
 <p>Download</p>
 <p><a href="https://github.com/CrazyMrYan/meetion-admin/archive/master.zip">meetion-admin-master.zip</a></p>
 - [在线预览](https://panjiachen.github.io/vue-element-admin)
+
+- [使用文档](https://panjiachen.github.io/vue-element-admin-site/zh/)
+
+- [Gitter 讨论组](https://gitter.im/vue-element-admin/discuss)
+
+- [Donate](https://panjiachen.gitee.io/vue-element-admin-site/zh/donate)
+
+- [Wiki](https://github.com/PanJiaChen/vue-element-admin/wiki)
+
+- [Gitee](https://panjiachen.gitee.io/vue-element-admin/) 在线预览（国内用户可访问该地址）
+
+- [国内访问文档](https://panjiachen.gitee.io/vue-element-admin-site/zh/) 文档（方便没翻墙的用户查看）
+
 <h2>Preview :bell:</h2>
 <p><a href="http://crazy.lovemysoul.vip/meetion-admin">在线预览 meetion-admin</a></p>
 <p><a href="http://crazy.lovemysoul.vip/">在线文档 介绍</a></p>
