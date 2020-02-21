@@ -21,6 +21,11 @@
 <p align="center">
   <img src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/src/home.png">
 </p>
-
+<p align="center">
+  <img src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/src/card.png">
+</p>
+<p align="center">
+  <img src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/src/table.png">
+</p>
 <p>If you like, please give me a star :star:</p>
 
