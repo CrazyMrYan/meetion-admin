@@ -1,4 +1,3 @@
-## meetion-admin:ship:  
 <p align="center">
   <img width="160" src="http://crazy.lovemysoul.vip/meetion-admin/src/images/logon.png">
 </p>
