@@ -2077,11 +2077,353 @@ html::-webkit-scrollbar {
 
 html::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: rgba(144, 147, 153, .5);
+    background: rgba(144, 147, 153, 0.5);
 }
 
 html::-webkit-scrollbar-track {
     /* margin-top: 50px; */
     border-radius: 10px;
     background: #fff;
+}
+.my-select * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.my-select {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    vertical-align: middle;
+    color: #515a6e;
+    font-size: 14px;
+    line-height: normal;
+    position: relative;
+}
+
+.select-selection {
+    display: block;
+    box-sizing: border-box;
+    outline: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #dcdee2;
+    transition: all 0.2s ease-in-out;
+}
+
+.select-selection:hover,
+.select-selection.select-focus {
+    border-color: #57a3f3;
+    box-shadow: 0 0 0 2px rgba(45, 140, 240, 0.2);
+}
+
+.select-selected-value {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 8px;
+    padding-right: 24px;
+}
+
+.icon-select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    line-height: 1;
+    margin-top: -7px;
+    font-size: 14px;
+    color: #808695;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: middle;
+}
+
+.icon-select-arrow::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+    border-left: 1.5px solid #808695;
+    border-bottom: 1.5px solid #808695;
+    transform: rotate(-45deg);
+}
+
+.select-dropdown {
+    width: 100%;
+    /* min-width: 120px;
+    max-height: 200px; */
+    overflow: auto;
+    margin: 5px 0;
+    padding: 5px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: 2;
+    transform-origin: center top 0px;
+    transition: all 0.3s;
+    will-change: top, left;
+    top: 30px;
+    left: 0;
+    transform: scale(1, 0);
+    opacity: 0;
+}
+
+.select-item {
+    line-height: normal;
+    padding: 7px 16px;
+    clear: both;
+    color: #515a6e;
+    font-size: 14px;
+    white-space: nowrap;
+    width: 100%;
+    list-style: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.select-item.select-item-selected,
+.select-item:hover {
+    color: #2d8cf0;
+    background-color: #f3f3f3;
+}
+label.M_radios-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+label {
+    user-select: none;
+    cursor: pointer;
+}
+
+/*自定义radio*/
+label.M_radios-label .bui-radios {
+    display: inline-block;
+    position: relative;
+    width: 13px;
+    height: 13px;
+    background-color: #fff;
+    border: 1px solid #979797;
+    border-radius: 50%;
+    vertical-align: -2px;
+    margin-right: 5px;
+}
+
+/*单选框选中后，自定义radio的样式*/
+label.M_radios-label input[type="radio"]:checked + .bui-radios:after {
+    position: absolute;
+    content: "";
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+}
+
+label.M_radios-label input[type="radio"]:checked + .bui-radios {
+    background-color: #57a3f3;
+    border: 1px solid #57a3f3;
+}
+
+label.M_radios-label input[type="radio"]:disabled + .bui-radios {
+    background-color: #e8e8e8;
+    border: 1px solid #979797;
+}
+
+label.M_radios-label input[type="radio"]:disabled:checked + .bui-radios:after {
+    background-color: #c1c1c1;
+}
+
+/*自定义radio的过渡效果*/
+label.M_radios-label.M_radios-anim .bui-radios {
+    -webkit-transition: background-color ease-out 0.5s;
+    transition: background-color ease-out 0.5s;
+}
+
+label.M_radios-anim input[type="checkbox"] {
+    visibility: hidden;
+    opacity: 0;
+}
+
+label.M_radios-anim .bui-checkbox {
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    vertical-align: -2px;
+    margin-right: 5px;
+}
+
+label.M_radios-anim input[type="checkbox"]:checked + .bui-checkbox:after {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 4px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg) translate(-50%, -50%);
+    top: 15%;
+    left: 50%;
+}
+
+label.M_radios-anim input[type="checkbox"]:checked + .bui-checkbox {
+    background-color: #57a3f3;
+}
+
+label.M_radios-anim input[type="checkbox"]:disabled + .bui-checkbox {
+    background-color: #e8e8e8;
+    border: 1px solid #979797;
+}
+
+label.M_radios-anim input[type="checkbox"]:disabled:checked + .bui-checkbox:after {
+    border-color: #000;
+}
+
+label.M_radios-anim.M_checkbox-anim .bui-checkbox {
+    -webkit-transition: background-color ease-in-out 0.3s;
+    transition: background-color ease-in-out 0.3s;
+}
+
+.M_Page ul {
+    padding: 0;
+    min-width: 450px;
+}
+
+.M_Page ul::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.M_Page ul li {
+    float: left;
+    width: auto;
+    min-width: 32px;
+    height: 30px;
+    line-height: 30px;
+    list-style: none;
+}
+
+.M_Page a {
+    color: #2ea9df;
+    font-family: "微软雅黑";
+    padding: 0 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border: 1px solid #e8e9eb;
+    border-left: none;
+}
+
+.M_Page ul li:first-child a {
+    border-left: 1px solid #e8e9eb;
+}
+
+.M_Page ul li a:hover {
+    background-color: dodgerblue;
+}
+
+.M_Page ul li a:hover {
+    color: white;
+}
+
+.M_Page .disabled a:hover {
+    background-color: #efefef;
+    cursor: not-allowed;
+    color: #aaa;
+}
+.M_Page .disabled {
+    background: #efefef;
+}
+.M_Page .disabled a {
+    color: #aaa;
+}
+.M_Page .active a {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.M_Page_s ul {
+    padding: 0;
+    min-width: 450px;
+}
+
+.M_Page_s ul::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.M_Page_s ul li {
+    float: left;
+    width: auto;
+    min-width: 32px;
+    height: 30px;
+    line-height: 30px;
+    list-style: none;
+}
+
+.M_Page_s a {
+    color: #2ea9df;
+    font-family: "微软雅黑";
+    padding: 0 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border: 1px solid #e8e9eb;
+    border-left: none;
+}
+
+.M_Page_s ul li:first-child a {
+    border-left: 1px solid #e8e9eb;
+}
+
+.M_Page_s ul li a:hover {
+    background-color: dodgerblue;
+}
+
+.M_Page_s ul li a:hover {
+    color: white;
+}
+
+.M_Page_s .disabled a:hover {
+    background-color: #efefef;
+    cursor: not-allowed;
+    color: #aaa;
+}
+.M_Page_s .disabled {
+    background: #efefef;
+}
+.M_Page_s .disabled a {
+    color: #aaa;
+}
+.M_Page_s .active a {
+    background-color: dodgerblue;
+    color: white;
 }

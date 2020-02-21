@@ -603,13 +603,28 @@ function GetTable(z) {
 			if(TableArray.configure){
 				for(let c = 0 ;c <TableArray.configure.length;c++){
 					if(TableArray.configure[c].name == TableArray.head[i]){
-						$('.M_Table_Array:eq(' + z + ')>.M_Headitem_Blue').append(`<div style="${TableArray.configure[c].style}">${TableArray.head[i]}</div>`)
+						
+							$('.M_Table_Array:eq(' + z + ')>.M_Headitem_Blue').append(`<div style="${TableArray.configure[c].style}">${TableArray.head[i]}</div>`)
+						// }
 					}else{
-						$('.M_Table_Array:eq(' + z + ')>.M_Headitem_Blue').append(`<div>${TableArray.head[i]}</div>`)
+						if(TableArray.head[i] == 'checkbox'){
+							$('.M_Table_Array:eq(' + z + ')>.M_Headitem_Blue').append(`
+								<div>
+									<label style="display: inline-block;" class="M_radios-anim">
+										<input type="checkbox" value="${i}" name="tablecheckbox"><i class="bui-checkbox"></i>
+									</label>
+								</div>
+							`)
+							$('.M_Table_Array:eq(' + z + ')>.M_Headitem_Blue>div').css('max-width','50px')
+						}else{
+							$('.M_Table_Array:eq(' + z + ')>.M_Headitem_Blue').append(`<div>${TableArray.head[i]}</div>`)
+
+						}
 					}
 				}
 			}else{
-				$('.M_Table_Array:eq(' + z + ')>.M_Headitem_Blue').append(`<div>${TableArray.head[i]}</div>`)
+		
+					$('.M_Table_Array:eq(' + z + ')>.M_Headitem_Blue').append(`<div>${TableArray.head[i]}</div>`)
 			}
 		}
 		for (let i = 0; i < TableArray.data.length; i++) {
@@ -631,6 +646,13 @@ function GetTable(z) {
 										$('.M_Table_Array:eq(' + z + ')>.M_Tritem:eq(' + i + ')').append(`<div>${TableArray.data[i][key]}</div>`);
 										break
 								}
+							}else if(TableArray.head[x] =="checkbox"){
+								$('.M_Table_Array:eq(' + z + ')>.M_Tritem:eq(' + i + ')').append(`<div>
+									<label style="display: inline-block;" class="M_radios-anim">
+										<input type="checkbox" value="${i+1}" name="tablecheckbox"><i class="bui-checkbox"></i>
+									</label>
+								</div>`);
+								$('.M_Table_Array:eq(' + z + ')>.M_Tritem:eq(' + i + ')>div').css("max-width","50px")
 							} else {
 								if(TableArray.configure){
 									for(let c = 0 ;c <TableArray.configure.length;c++){
@@ -916,3 +938,413 @@ function tab_navcolorf(z){
 		
 	})
 }
+	/* jshint esversion: 6 */
+	(function (window, document) {
+		let Selector = function (option) {
+			//执行初始化方法，
+			this._init(option);
+		};
+		Selector.prototype = {
+			//初始化传入参数并定义初始化的相关变量
+			_init({
+				eleSelector = "", //传入的选择器 id,class，tag等，用于将选择框渲染到此选择器所在的元素
+				options = [{
+					name: "请选择",
+					value: "0",
+				}], //传入的下拉框对象，name为选择的文字，value为值
+				defaultText = "请选择" //提供的默认选择的值
+			}) {
+
+				//将传入的数据绑定到this上
+				this.parentEle = document.querySelector(eleSelector) || document.body; //要邦定的dom 
+				this.options = options; //选择值数组对象
+				this.defaultText = defaultText; //默认值
+
+				this.dropboxShow = false; //定义存储下拉框的显示隐藏状态
+				this.defaultValue = ""; //定义村赤默认选中的值
+				this._creatElement(); //初始化后执行创建元素方法
+			},
+
+			//创建下拉选择框dom
+			_creatElement() {
+				//选择框最外层的包裹元素
+				let wrapEle = document.createElement("div");
+				wrapEle.className = "my-select";
+
+				//根据传入的值获取选择框默认的值和内容
+				this.options.forEach(item => {
+					if (item.name === "this.defaultText") {
+						this.defaultValue = item.value;
+					}
+				});
+
+				let selectWarpBox = document.createElement("div"); //选择框包裹元素
+				selectWarpBox.className = "select-selection";
+
+				let inputHideBox = document.createElement("input"); //隐藏保存选择值得元素
+				inputHideBox.type = "hidden";
+				inputHideBox.value = this.defaultValue;
+
+				let selectShowBox = document.createElement("div"); //选择框默认展示框
+				let selectNameBox = document.createElement("span"); //选择框展现的值ele
+				selectNameBox.className = "select-selected-value";
+				selectNameBox.id = "select-option";
+				selectNameBox.innerText = this.defaultText; //将传入的默认值赋值
+				let selectIcon = document.createElement("i"); //图标ele
+				selectIcon.className = "arrow-down icon-select-arrow";
+				//将span和角标添加到外层div
+				selectShowBox.appendChild(selectNameBox);
+				selectShowBox.appendChild(selectIcon);
+
+				selectWarpBox.appendChild(inputHideBox);
+				selectWarpBox.appendChild(selectShowBox);
+
+				//下拉框
+				let dropbox = document.createElement("div"),
+					ulbox = document.createElement("ul");
+
+				dropbox.id = "select-drop";
+				dropbox.className = "select-dropdown";
+				ulbox.className = "select-dropdown-list";
+				//遍历传入的选项数组对象，生成下拉菜单的li元素并赋值
+				this.options.forEach((item) => {
+					let itemLi = document.createElement("li");
+					if (this.defaultText === item.name) {
+						itemLi.className = "select-item select-item-selected";
+					} else {
+						itemLi.className = "select-item";
+					}
+
+					itemLi.setAttribute("data-value", item.value);
+					itemLi.innerText = item.name;
+					ulbox.appendChild(itemLi);
+
+				});
+				//将下拉框ul推入到包裹元素
+				dropbox.appendChild(ulbox);
+
+				wrapEle.appendChild(selectWarpBox);
+				wrapEle.appendChild(dropbox);
+
+				this.parentEle.appendChild(wrapEle); //将生成的下拉框添加到所选元素中
+
+				//把需要操作的dom挂载到当前实例
+				//this.wrapEle = wrapEle;     //最外层包裹元素
+				this.eleSelect = selectWarpBox; //选择框
+				this.eleDrop = dropbox; //下拉框
+				this.eleSpan = selectNameBox; //显示文字的span节点
+
+				//绑定事件处理函数
+				this._bind(this.parentEle);
+			},
+
+			//点击下拉框事件处理函数
+			_selectHandleClick() {
+				if (this.dropboxShow) {
+					this._selectDropup();
+				} else {
+					this._selectDropdown();
+				}
+			},
+
+			//收起下拉选项
+			_selectDropup() {
+				this.eleDrop.style.transform = "scale(1,0)";
+				this.eleDrop.style.opacity = "0";
+				this.eleSelect.className = "select-selection";
+				this.dropboxShow = false;
+			},
+
+			//展示下拉选项
+			_selectDropdown() {
+				this.eleDrop.style.transform = "scale(1,1)";
+				this.eleDrop.style.opacity = "1";
+				this.eleSelect.className = "select-selection select-focus";
+				this.dropboxShow = true;
+			},
+
+			//点击下拉选项进行赋值
+			_dropItemClick(ele) {
+				this.defaultValue = ele.getAttribute("data-value");
+				//document.querySelector("#select-value").value = ele.getAttribute("data-value");
+				this.eleSpan.innerText = ele.innerText;
+				let params = {}
+				params.mount = this.parentEle.className
+				params.name = ele.innerText
+				params.index = ele.getAttribute("data-value")
+				change(params, ele)
+				ele.className = "select-item select-item-selected";
+				//对点击选中的其他所有兄弟元素修改class去除选中样式
+				this._siblingsDo(ele, function (ele) {
+					if (ele) {
+						ele.className = "select-item";
+					}
+				});
+				this._selectDropup();
+			},
+
+			//node遍历是否是子元素包裹元素
+			_getTargetNode(ele, target) {
+				//ele是内部元素，target是你想找到的包裹元素
+				if (!ele || ele === document) return false;
+				return ele === target ? true : this._getTargetNode(ele.parentNode, target);
+			},
+
+			//兄弟元素遍历处理函数
+			_siblingsDo(ele, fn) {
+
+				(function (ele) {
+					fn(ele);
+					if (ele && ele.previousSibling) {
+						arguments.callee(ele.previousSibling);
+					}
+				})(ele.previousSibling);
+
+				(function (ele) {
+					fn(ele);
+					if (ele && ele.nextSibling) {
+						arguments.callee(ele.nextSibling);
+					}
+				})(ele.nextSibling);
+
+			},
+
+			//绑定下拉框事件处理函数
+			_bind(parentEle) {
+				let _this = this;
+				//事件委托到最外层包裹元素进行绑定处理
+				parentEle.addEventListener("click", function (e) {
+					const ele = e.target;
+					//遍历当前点击的元素，如果是选中框内的元素执行
+					if (_this._getTargetNode(ele, _this.eleSelect)) {
+						if (_this.dropboxShow) {
+							_this._selectDropup();
+						} else {
+							_this._selectDropdown();
+						}
+					} else if (ele.className === "select-item") { //如果是点击的下拉框的选项执行
+						_this._dropItemClick(ele);
+					} else { //点击其他地方隐藏下拉框
+						_this._selectDropup();
+					}
+
+				});
+
+			}
+
+		};
+		//将构造函数挂载到全局window
+		window.$Selector = Selector;
+	})(window, document);
+	Array.prototype.contains = function (obj) {
+        var i = this.length;
+        while (i--) {
+            if (this[i] === obj) {
+                return i; // 返回的这个 i 就是元素的索引下标，
+            }
+        }
+        return false;
+	}
+   var tableChoice = []
+
+    $(document).ready(function () {
+        $("input[name=tablecheckbox]").on('click', function (e) {
+            if ($(this).is(':checked')) {
+                if ($(this).val() == 0) {
+                    $("input[name=tablecheckbox]").prop("checked", true)
+                    var all = $("input[name=tablecheckbox]")
+                    tableChoice = []
+                    for (let z = 0; z < all.length; z++) {
+                        tableChoice.push(all[z].value)
+					}
+					tableChoice.splice(tableChoice.contains(0), 1)
+                } else if ($('[name="tablecheckbox"]:checked').length + 1 == $('[name="tablecheckbox"]').length) {
+                    $("input[name=tablecheckbox]:eq(" + 0 + ")").prop("checked", true)
+                } else {
+                    tableChoice.push($(this).val())
+                }
+            } else {
+                if ($(this).val() == 0) {
+                    $("input[name=tablecheckbox]").prop("checked", false)
+                    tableChoice = []
+                } else {
+                    tableChoice.splice(tableChoice.contains($(this).val()), 1)
+                    $("input[name=tablecheckbox]:eq(" + 0 + ")").prop("checked", false)
+                }
+			}
+        });
+	});
+    $('.nav-left-container').on('click', 'li', function () {
+        $(this).find('.fa-angle-right').removeClass('fa-angle-right').addClass('fa-angle-down');
+        $(this).addClass('active').children('.nav-left-container-small').slideDown()
+        $(this).siblings().removeClass('active').children('.nav-left-container-small').slideUp()
+        $(this).siblings().find('.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-right');
+	})
+	M_Page = new Page();
+	//分页对象
+	function Page(){
+		this.config = {elemId:'#page',pageIndex:'1',total:'0',pageNum:'7',pageSize:'10'};//默认参数
+		this.version = '1.0';//分页版本
+		this.requestFunction = null;//分页版本
+	
+		//初始化参数
+		this.initMathod = function(obj){
+			$.extend(this.config,obj.params);//默认参数 + 用户自定义参数
+			this.requestFunction = obj.requestFunction;
+			this.renderPage();
+		};
+	
+		//渲染分页
+		this.renderPage = function(){
+			this.requestFunction();
+			this.pageHtml();
+	
+			//分页绑定事件
+			$(M_Page.config.elemId).on('click','a',function(){
+				var flag = $(this).parent().hasClass('disabled');
+				if(flag){
+					return false;
+				}
+	
+				var pageIndex = $(this).data('pageindex');
+				M_Page.config.pageIndex = pageIndex;
+				M_Page.requestFunction();
+				M_Page.pageHtml();
+			});
+		};
+	
+		//分页合成
+		this.pageHtml = function(){
+			var data = this.config;
+			if(parseInt(data.total) <= 0){
+				return false;
+			}
+	
+			var elemId = data.elemId;
+			var pageNum = isBlank(data.pageNum) ? 7 : parseInt(data.pageNum);//可显示页码个数
+			var pageSize = isBlank(data.pageSize) ? 10 : parseInt(data.pageSize);//可显示页码个数
+			var total = parseInt(data.total);//总记录数
+			var pageTotal = total%pageSize != 0 ? parseInt(total/pageSize) + 1 : parseInt(total/pageSize);//总页数
+			var pageIndex = pageTotal < parseInt(data.pageIndex) ? pageTotal : parseInt(data.pageIndex);//当前页
+			var j = pageTotal < pageNum ? pageTotal : pageNum;//如果总页数小于可见页码，则显示页码为总页数
+			var k = pageIndex < parseInt((j/2) + 1) ? -1 * (pageIndex - 1) : pageIndex > (pageTotal - parseInt(j/2)) ? -1 * (j - (pageTotal - pageIndex) - 1) : -1 * parseInt((j/2));//遍历初始值
+			var pageHtml = '<ul>';
+	
+			if(pageIndex <= 0 || pageIndex == 1){
+				pageHtml +='<li class="disabled"><a href="javascript:;" data-pageindex="'+ pageIndex +'">上一页</a></li>';
+			}else{
+				pageHtml +='<li><a href="javascript:;" data-pageindex="'+ (pageIndex - 1) +'">上一页</a></li>';
+			}
+	
+			for(var i = k;i < (k + j);i++){
+				if(pageTotal == (pageIndex + i - 1))break;
+				if(i == 0){
+					pageHtml += '<li class="active"><a href="javascript:;" data-pageindex="'+ pageIndex +'">'+ pageIndex +'</a></li>';
+				}else{
+					pageHtml += '<li><a href="javascript:;" data-pageindex="'+ (pageIndex + i) +'">'+ (pageIndex + i) +'</a></li>';
+				}
+			}
+	
+			if(pageTotal == 1 ||  pageTotal <= pageIndex){
+				pageHtml += '<li class="disabled"><a href="javascript:;" data-pageindex="'+ pageTotal +'">下一页</a></li>'
+			}else{
+				pageHtml += '<li><a href="javascript:;" data-pageindex="'+ (pageIndex + 1) +'">下一页</a></li>'
+			}
+			pageHtml += '</ul>'
+			$(elemId).html('');
+			$(elemId).html(pageHtml);
+		};
+	}
+	
+	function isBlank(str){
+		if(str == undefined || str == null || str.trim() == ''){
+			return true;
+		}
+		return false;
+	}
+// 	M_Page_s = new Page();
+// //分页对象
+// function Page(){
+//     this.config = {elemId:'#page',pageIndex:'1',total:'0',pageNum:'7',pageSize:'10'};//默认参数
+//     this.version = '1.0';//分页版本
+//     this.requestFunction = null;//分页版本
+
+//     //初始化参数
+//     this.initMathod = function(obj){
+//         $.extend(this.config,obj.params);//默认参数 + 用户自定义参数
+//         this.requestFunction = obj.requestFunction;
+//         this.renderPage();
+//     };
+
+//     //渲染分页
+//     this.renderPage = function(){
+//         this.requestFunction();
+//         this.pageHtml();
+
+//         //分页绑定事件
+//         $(M_Page_s.config.elemId).on('click','a',function(){
+//             var flag = $(this).parent().hasClass('disabled');
+//             if(flag){
+//                 return false;
+//             }
+
+//             var pageIndex = $(this).data('pageindex');
+//             M_Page_s.config.pageIndex = pageIndex;
+//             M_Page_s.requestFunction();
+//             M_Page_s.pageHtml();
+//         });
+//     };
+
+//     //分页合成
+//     this.pageHtml = function(){
+//         var data = this.config;
+//         if(parseInt(data.total) <= 0){
+//             return false;
+//         }
+
+//         var elemId = data.elemId;
+//         var pageNum = isBlank(data.pageNum) ? 7 : parseInt(data.pageNum);//可显示页码个数
+//         var pageSize = isBlank(data.pageSize) ? 10 : parseInt(data.pageSize);//可显示页码个数
+//         var total = parseInt(data.total);//总记录数
+//         var pageTotal = total%pageSize != 0 ? parseInt(total/pageSize) + 1 : parseInt(total/pageSize);//总页数
+//         var pageIndex = pageTotal < parseInt(data.pageIndex) ? pageTotal : parseInt(data.pageIndex);//当前页
+//         var j = pageTotal < pageNum ? pageTotal : pageNum;//如果总页数小于可见页码，则显示页码为总页数
+//         var k = pageIndex < parseInt((j/2) + 1) ? -1 * (pageIndex - 1) : pageIndex > (pageTotal - parseInt(j/2)) ? -1 * (j - (pageTotal - pageIndex) - 1) : -1 * parseInt((j/2));//遍历初始值
+//         var pageHtml = '<ul>';
+
+//         if(pageIndex <= 0 || pageIndex == 1){
+//             pageHtml += '<li class="disabled"><a href="javascript:;" data-pageindex="'+ pageIndex +'">首页</a></li>' +
+//                 '<li class="disabled"><a href="javascript:;" data-pageindex="'+ pageIndex +'">上一页</a></li>';
+//         }else{
+//             pageHtml += '<li><a href="javascript:;" data-pageindex="1">首页</a></li>' +
+//                 '<li><a href="javascript:;" data-pageindex="'+ (pageIndex - 1) +'">上一页</a></li>';
+//         }
+
+//         for(var i = k;i < (k + j);i++){
+//             if(pageTotal == (pageIndex + i - 1))break;
+//             if(i == 0){
+//                 pageHtml += '<li class="active"><a href="javascript:;" data-pageindex="'+ pageIndex +'">'+ pageIndex +'</a></li>';
+//             }else{
+//                 pageHtml += '<li><a href="javascript:;" data-pageindex="'+ (pageIndex + i) +'">'+ (pageIndex + i) +'</a></li>';
+//             }
+//         }
+
+//         if(pageTotal == 1 ||  pageTotal <= pageIndex){
+//             pageHtml += '<li class="disabled"><a href="javascript:;" data-pageindex="'+ pageTotal +'">下一页</a></li>' +
+//                 '<li class="disabled"><a href="javascript:;" data-pageindex="'+ pageTotal +'">末页</a></li>';
+//         }else{
+//             pageHtml += '<li><a href="javascript:;" data-pageindex="'+ (pageIndex + 1) +'">下一页</a></li>' +
+//                 '<li><a href="javascript:;" data-pageindex="'+ pageTotal +'">末页</a></li>';
+//         }
+//         pageHtml += '</ul>'
+//         $(elemId).html('');
+//         $(elemId).html(pageHtml);
+//     };
+// }
+
+// function isBlank(str){
+//     if(str == undefined || str == null || str.trim() == ''){
+//         return true;
+//     }
+//     return false;
+// }

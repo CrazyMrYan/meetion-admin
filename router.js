@@ -108,12 +108,8 @@ if(localStorage.getItem('token') === 'a66abb5684c45962d887564f08346e8d'){
                     path:'vivews/assembly/table.html',
                 },
                 {
-                    name:"开关",
-                    path:'vivews/assembly/button.html',
-                },
-                {
                     name:"分页",
-                    path:'vivews/assembly/button.html',
+                    path:'vivews/assembly/paging.html',
                 }
             ]
         },
