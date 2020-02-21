@@ -1,6 +1,6 @@
 ## meetion-admin:ship:  
 <p align="center">
-  <img width="320" src="http://crazy.lovemysoul.vip/meetion-admin/src/images/logon.png">
+  <img width="160" src="http://crazy.lovemysoul.vip/meetion-admin/src/images/logon.png">
 </p>
 <p>:smirk: :blush:</p>
 <h2>Install :bell:</h2>
