@@ -74,7 +74,7 @@
             ,{"name":"首页","link":"javascript:;"}
             ]
         </div>
-        <div class="" style="width: 100%;height:860px; margin: 15px 0;">
+        <div class="" style="width: 100%; margin: 15px 0;">
             <p class="M_P_Title" style="margin:10px 0;background: #fff;padding: 15px;"> 首页 Home</p>
 
             <div class="Flex">
@@ -280,13 +280,20 @@
         </div>
     </div>
 </body>
-<script src="../src/meetionW.js"></script>
 
-<script>
-
-</script>
 <script src="../src/meetion.js"></script>
-
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    $('.M_Breadcrumb_').append(`<div style="
+        float: right;
+        line-height: 50px;
+        margin-right: 40px;
+        ">当前 IP : ${returnCitySN["cip"]} &nbsp;&nbsp;&nbsp; 当前地区 : ${returnCitySN["cname"]}  &nbsp;&nbsp;&nbsp;
+        <a href="http://tianqi.2345.com/api/getWeatherInfo.php" target="_blank" style="cursor: pointer;
+        color: skyblue;" >查看更多 &gt;&gt;</a>
+        </div>`
+    )
+</script>
 <script type="text/javascript">
     //x,y 坐标,radius 半径,process 百分比,backColor 中心颜色, proColor 进度颜色, fontColor 中心文字颜色
     function DrowProcess(x, y, radius, process, backColor, proColor, fontColor) {
