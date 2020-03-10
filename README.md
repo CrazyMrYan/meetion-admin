@@ -32,3 +32,7 @@
 <p align="left">
   <img width="120" src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/images/beishang.png">
 </p>
+<p>也可以打赏支持一下 </p>
+<p align="left">
+  <img width="120" src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/images/zanshang.jpg">
+</p>
