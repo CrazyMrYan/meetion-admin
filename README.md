@@ -28,4 +28,7 @@
   <img src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/src/table.png">
 </p>
 <p>If you like, please give me a star :star:</p>
-
+<p>关注微信公众号“悲伤日记”</p>
+<p align="center">
+  <img src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/images/beishang.png">
+</p>
