@@ -3,6 +3,7 @@
 </p>
 <p align="center">
  <img src="https://img.shields.io/github/stars/CrazyMrYan/tool-funjs?style=social.svg" />
+ <img src="https://img.shields.io/badge/%20downloads-130/week-brightgreen.svg" />
 </p>
 <h1 align="center"> Meetion-Admin </h1>
 
