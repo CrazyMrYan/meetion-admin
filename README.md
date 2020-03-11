@@ -29,10 +29,11 @@
 </p>
 <p>If you like, please give me a star :star:</p>
 <p>关注微信公众号“悲伤日记”</p>
-<p align="left">
-  <img width="120" src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/images/beishang.png">
-</p>
-<p>也可以打赏支持一下 </p>
-<p align="left">
-  <img width="180" src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/images/zan.png">
-</p>
+
+  <img  align="left" width="120" src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/images/beishang.png">
+    <img  align="left" width="180" src="http://crazy-x-lovemysoul-x-vip.img.abc188.com/images/zan.png">
+
+
+
+
+
