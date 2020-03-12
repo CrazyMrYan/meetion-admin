@@ -1,5 +1,5 @@
 var Request = {};
-Request.host = "URL";
+Request.host = "";
 // Get
 Request.Get = function (serverName, datas, succ, erro, comp, isAsync) {
     var async = true

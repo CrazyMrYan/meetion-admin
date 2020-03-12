@@ -7,9 +7,9 @@
     *关键词= #f56c6c;
     *符号 = #909399;
     *new = #009688
-*/
+*/ 
     $('.Mcode_js').html(function (i, oldHTML) {
-        return oldHTML.replace(/ =/g, '<font color="#409eff"><b style="color:rgb(228, 108, 187)"> = </b></font>');
+        return oldHTML.replace(/ =/g, '<font color="#409eff"><b style="color:rgb(228, 108, 187)"> =</b></font>');
     })
     $('.Mcode_js').html(function (i, oldHTML) {
         return oldHTML.replace(/router/g, '<font color="#f56c6c">router</font>');

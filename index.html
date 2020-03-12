@@ -15,12 +15,16 @@
     </div>
     <script src="router.js"></script>
     <script src="src/indexDOM.js"></script>
+    <script src="src/request.js"></script>
 </body>
 
 <script src="src/meetion.js"></script>
 <script src="src/util/util.js"></script>
 <script>
     showMessage(`${localStorage.getItem('Account')} 欢迎你`, 'success', 2000);
+    // Request.Post('https://tools.yum6.cn/Tools/view_source/index.php', { url: "www.baidu.com" }, res => {
+    //     console.log(res)
+    // })
 </script>
 
 </html>

@@ -2427,3 +2427,144 @@ label.M_radios-anim.M_checkbox-anim .bui-checkbox {
     background-color: dodgerblue;
     color: white;
 }
+.tree {
+    /* border: 1px solid black;
+    width: 600px;
+    height: 100vh;
+    display: block;
+    margin: auto;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    position: relative;
+    padding-left: 20px; */
+}
+
+.synTree .iconxiangyou {
+    cursor: pointer;
+}
+
+.synTree span {
+    position: relative;
+    top: -6px;
+    left: 10px;
+    color: #010102;
+    cursor: default;
+}
+
+.leg_tree li {
+    list-style-type: none;
+    margin-left: -10px;
+    position: relative;
+    line-height: 22px;
+}
+
+.leg_tree li a {
+    position: absolute;
+    top: -4px;
+    padding: 0px 10px;
+    text-decoration: none;
+    color: #888;
+    font-size: 14px;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Chrome/Safari/Opera */
+    -khtml-user-select: none;
+    /* Konqueror */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+not supported by any browser */
+}
+
+.iconxiangyou {
+    position: absolute;
+    top: -5px;
+    left: -10px;
+}
+
+.leg_tree li i {
+    font-size: 14px;
+}
+
+.leg_tree li i ~ i:before {
+    position: relative;
+    top: -3px;
+    left: 5px;
+}
+
+.tree input {
+    cursor: pointer;
+}
+
+.tree span {
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #e2e2e2;
+    width: 10px;
+    line-height: 8px;
+    text-align: center;
+    height: 10px;
+    background-color: whitesmoke;
+    position: absolute;
+    left: 8px;
+    top: 4px;
+}
+
+.tree ul span {
+    left: -16px;
+}
+
+.tree ul {
+    list-style-type: none;
+    margin-top: 0px;
+    position: relative;
+    margin-left: 30px;
+}
+
+.label {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    border: 1px solid #0095ff;
+    border-radius: 3px;
+}
+
+.label i {
+    color: #0095ff;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    font-size: 18px !important;
+}
+
+.label:hover {
+    box-shadow: 0 0 4px 0px #a0aefb;
+}
+
+/*.label i:hover {
+        box-shadow: 0 0 4px 0px #a0aefb;
+    }*/
+.isShow {
+    position: absolute;
+    top: -3px;
+    left: -20px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.isShow {
+    width: 14px;
+    margin-right: 5px;
+}
+
+.tree1 {
+    position: fixed;
+    top: 20px;
+}

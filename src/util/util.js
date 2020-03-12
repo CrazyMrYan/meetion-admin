@@ -250,9 +250,9 @@ function isPCBroswer() {
 
 //   25、unique：数组去重，返回一个新数组
 function unique(arr){
-    if(!isArrayLink(arr)){ //不是类数组对象
-      return arr
-    }
+    // if(!isArrayLink(arr)){ //不是类数组对象
+    //   return arr
+    // }
     let result = []
     let objarr = []
     let obj = Object.create(null)
@@ -272,7 +272,7 @@ function unique(arr){
       }
     })
      
-    return resulte
+    return result
 }
 
 // 26、Set简单实现
@@ -626,37 +626,37 @@ window.onload = function(){
       console.log('白屏时间 ：' + (t.responseStart - t.navigationStart).toFixed(0))
       console.log('domready时间 ：' + (t.domContentLoadedEventEnd - t.navigationStart).toFixed(0))
       console.log('onload时间 ：' + (t.loadEventEnd - t.navigationStart).toFixed(0))
-   
       if(t = performance.memory){
         console.log('js内存使用占比 ：' + (t.usedJSHeapSize / t.totalJSHeapSize * 100).toFixed(2) + '%')
       }
     })
   }
 //   47、禁止某些键盘事件
-document.addEventListener('keydown', function(event){
-    return !(
-      112 == event.keyCode || //F1
-      123 == event.keyCode || //F12
-      event.ctrlKey && 82 == event.keyCode || //ctrl + R
-      event.ctrlKey && 78 == event.keyCode || //ctrl + N
-      event.shiftKey && 121 == event.keyCode || //shift + F10
-      event.altKey && 115 == event.keyCode || //alt + F4
-      "A" == event.srcElement.tagName && event.shiftKey //shift + 点击a标签
-    ) || (event.returnValue = false)
-  });
+// document.addEventListener('keydown', function(event){
+//     return !(
+//       112 == event.keyCode || //F1
+//       123 == event.keyCode || //F12
+//       event.ctrlKey && 82 == event.keyCode || //ctrl + R
+//       event.ctrlKey && 78 == event.keyCode || //ctrl + N
+//       event.shiftKey && 121 == event.keyCode || //shift + F10
+//       event.altKey && 115 == event.keyCode || //alt + F4
+//       "A" == event.srcElement.tagName && event.shiftKey //shift + 点击a标签
+//     ) || (event.returnValue = false)
+//   });
 
-//   48、禁止右键、选择、复制
-['contextmenu'].forEach(function(ev){
-    document.addEventListener(ev, function(event){
-      return event.returnValue = false
-    })
-  });
+// //   48、禁止右键、选择、复制
+// ['contextmenu'].forEach(function(ev){
+//     document.addEventListener(ev, function(event){
+//       return event.returnValue = false
+//     })
+//   });
   // 关闭禁止选择复制
   // ['contextmenu', 'selectstart', 'copy'].forEach(function(ev){
   //   document.addEventListener(ev, function(event){
   //     return event.returnValue = false
   //   })
   // });
+
 // 自动推送是百度搜索资源平台为提高站点新增网页发现速度推出的工具，安装自动推送JS代码的网页，在页面被访问时，页面URL将立即被推送给百度。
 // (function(){
 //     var bp = document.createElement('script');

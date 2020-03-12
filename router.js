@@ -112,6 +112,21 @@ if(localStorage.getItem('token') === 'a66abb5684c45962d887564f08346e8d'){
                     path:'vivews/assembly/paging.html',
                 }
             ]
+        }
+        ,
+        {
+            name:"插件",
+            icon:"fa fa-paperclip",
+            children:[
+                {
+                    name:"树形控件",
+                    path:'vivews/PlugIn/tree.html',
+                },
+                {
+                    name:"工具函数",
+                    path:'vivews/PlugIn/util.html',
+                },
+            ]
         },
         {
             name:"生态系统",
