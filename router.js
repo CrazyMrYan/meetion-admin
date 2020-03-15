@@ -120,11 +120,11 @@ if(localStorage.getItem('token') === 'a66abb5684c45962d887564f08346e8d'){
             children:[
                 {
                     name:"树形控件",
-                    path:'vivews/PlugIn/tree.html',
+                    path:'vivews/instrument/tree.html',
                 },
                 {
                     name:"工具函数",
-                    path:'vivews/PlugIn/util.html',
+                    path:'vivews/instrument/util.html',
                 },
             ]
         },
