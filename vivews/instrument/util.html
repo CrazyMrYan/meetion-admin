@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../src/meetion.css">
+    <script src="../../src/util/jquery.min3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+    <style>
+        .timing>p {
+            line-height: 30px;
+            height: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <div class="M_Breadcrumb_" style="background: #fff;margin-bottom: 15px;">
+            [
+            {"name":"插件","link":"javascript:;"}
+            ,{"name":"工具函数","link":"javascript:;"}
+            ]
+        </div>
+        <p class="M_P_Title" style="margin:10px 0;background: #fff;padding: 15px;"> 工具函数 Util</p>
+
+        <div class="Flex">
+
+            <div class="M_Card Flex" style="flex: 1;padding-bottom: 80px;">
+                <div style="flex: 1;">
+                    <h3 style="margin-bottom: 10px;">基本信息</h3>
+                    <div style="margin: 15px 0;" class="timing">
+                    </div>
+                    <h3 style="margin-bottom: 10px;">横杠驼峰互转命名</h3>
+                    <div>
+                        <input type="text" style="height: 24px;width: 180px;" value="add-class" placeholder="add-class"
+                            class="M_Ipt M_ipt_D M_Ipt16">
+                        <button class="M_Btn M_Btn9">
+                            获取
+                        </button>
+                        <input type="text" style="height: 24px;width: 180px; margin-left:20px;" value="" placeholder=""
+                            class="M_Ipt M_ipt_D M_Ipt17">
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <input type="text" style="height: 24px;width: 180px;" value="addClass" placeholder="addClass"
+                            class="M_Ipt M_ipt_D M_Ipt18">
+                        <button class="M_Btn M_Btn10">
+                            获取
+                        </button>
+                        <input type="text" style="height: 24px;width: 180px; margin-left:20px;" value="" placeholder=""
+                            class="M_Ipt M_ipt_D M_Ipt19">
+                    </div>
+                    <h3 style="margin: 10px 0; ">首字母大写</h3>
+                    <div>
+                        <input type="text" style="height: 24px;width: 180px;" value="meetion" placeholder="meetion"
+                            class="M_Ipt M_ipt_D M_Ipt20">
+                        <button class="M_Btn M_Btn11">
+                            获取
+                        </button>
+                        <input type="text" style="height: 24px;width: 180px; margin-left:20px;" value="" placeholder=""
+                            class="M_Ipt M_ipt_D M_Ipt21">
+                    </div>
+                </div>
+                <div style="flex: 1;">
+
+                    <h3 style="margin-bottom: 10px;">时间格式</h3>
+                    <div style="margin: 15px 0;">
+                        <input type="text" style="height: 24px;width: 180px;" value="" placeholder="YYYY-MM-DD HH:mm"
+                            class="M_Ipt M_ipt_D M_Ipt1">
+                        <button class="M_Btn M_Btn1">
+                            获取
+                        </button>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <input type="text" style="height: 24px;width: 180px;" value="20200222" placeholder="YYYYMMDD"
+                            class="M_Ipt M_ipt_D M_Ipt2">
+                        <button class="M_Btn M_Btn2">
+                            修改
+                        </button>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <input type="text" style="height: 24px;width: 180px;" value="2019年06月26日"
+                            placeholder="YYYY年MM月DD日" class="M_Ipt M_ipt_D M_Ipt3">
+                        <button class="M_Btn M_Btn3">
+                            修改
+                        </button>
+                    </div>
+                    <br>
+                    <h3 style="margin-bottom: 10px;">数组查找</h3>
+                    <div>
+                        <input class="M_Ipt M_ipt_D M_Ipt4" type="text" style="height: 24px;width: 180px;"
+                            value="[1,2,5,8,1,4,5]">
+                        </input>
+                        <button class="M_Btn4 M_Btn">
+                            查找
+                        </button>
+                        <input class="M_Ipt M_ipt_D M_Ipt5" type="text"
+                            style="height: 24px;width: 180px; margin-left:20px;" value="1">
+                        </input>
+                        结果=
+                        <input class="M_Ipt M_ipt_D M_Ipt6" type="text"
+                            style="height: 24px;width: 180px; margin-left:20px;">
+                        </input>
+                    </div>
+                    <br>
+                    <h3 style="margin-bottom: 10px;">随机数</h3>
+                    <div>
+                        <input class="M_Ipt M_ipt_D M_Ipt7" type="text" style="height: 24px;width: 180px;" value=""
+                            placeholder="最小值">
+                        </input>
+                        <button class="M_Btn5 M_Btn">
+                            随机
+                        </button>
+                        <input class="M_Ipt M_ipt_D M_Ipt8" type="text"
+                            style="height: 24px;width: 180px; margin-left:20px;" value="" placeholder="最大值">
+                        </input>
+                        结果=
+                        <input class="M_Ipt M_ipt_D M_Ipt9" type="text"
+                            style="height: 24px;width: 180px; margin-left:20px;">
+                        </input>
+                    </div>
+                    <br>
+                    <h3 style="margin-bottom: 10px;">筛选值</h3>
+                    <div style="margin-bottom: 20px;">
+                        <input class="M_Ipt M_ipt_D M_Ipt10" type="text" style="height: 24px;width: 180px;"
+                            value="[5,8,1,4,8,5]" placeholder="">
+                        </input>
+                        <button class="M_Btn6 M_Btn">
+                            最小值
+                        </button>
+                        <input class="M_Ipt M_ipt_D M_Ipt11" type="text"
+                            style="height: 24px;width: 180px; margin-left:20px;">
+                        </input>
+                    </div>
+                    <div>
+                        <input class="M_Ipt M_ipt_D M_Ipt12" type="text" style="height: 24px;width: 180px;"
+                            value="[5,8,1,4,8,5]" placeholder="">
+                        </input>
+                        <button class="M_Btn7 M_Btn">
+                            最大值
+                        </button>
+                        <input class="M_Ipt M_ipt_D M_Ipt13" type="text"
+                            style="height: 24px;width: 180px; margin-left:20px;">
+                        </input>
+                    </div>
+                    <br>
+                    <h3 style="margin-bottom: 10px;">数组去重</h3>
+                    <div style="margin-bottom: 20px;">
+                        <input class="M_Ipt M_ipt_D M_Ipt14" type="text" style="height: 24px;width: 180px;"
+                            value="[6,4,8,4,5,7,9,1,6]" placeholder="">
+                        </input>
+                        <button class="M_Btn8 M_Btn">
+                            去重
+                        </button>
+                        <input class="M_Ipt M_ipt_D M_Ipt15" type="text"
+                            style="height: 24px;width: 180px; margin-left:20px;">
+                        </input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script src="../../src/meetion.js"></script>
+<script src="../../src/util/util.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+<script>
+    $('.M_Btn1').click(function () {
+        $('.M_Ipt1').val(dateFormater('YYYY-MM-DD HH:mm', ''))
+    })
+    $('.M_Btn2').click(function () {
+        $('.M_Ipt2').val(dateStrForma($('.M_Ipt2').val(), 'YYYYMMDD', 'YYYY年MM月DD日'))
+    })
+    $('.M_Btn3').click(function () {
+        $('.M_Ipt3').val(dateStrForma($('.M_Ipt3').val(), 'YYYY年MM月DD日', 'YYYYMMDD'))
+    })
+
+    window.onload = function () {
+        setTimeout(function () {
+            let t = performance.timing
+            $('.timing').append(`
+                    <p>DNS查询耗时 ： ${(t.domainLookupEnd - t.domainLookupStart).toFixed(0)}</p>
+                    <p>TCP链接耗时 ： ${(t.connectEnd - t.connectStart).toFixed(0)}</p>
+                    <p>request请求耗时 ： ${ (t.responseEnd - t.responseStart).toFixed(0)}</p>
+                    <p>解析dom树耗时 ： ${(t.domComplete - t.domInteractive).toFixed(0)}</p>
+                    <p>白屏时间 ： ${(t.responseStart - t.navigationStart).toFixed(0)}</p>
+                    <p>domready时间 ： ${(t.domContentLoadedEventEnd - t.navigationStart).toFixed(0)}</p>
+                    <p>onload时间 ： ${(t.loadEventEnd - t.navigationStart).toFixed(0)}</p>
+                `
+            )
+            if (t = performance.memory) {
+                $('.timing').append('<p> js内存使用占比  ： ' + (t.usedJSHeapSize / t.totalJSHeapSize * 100).toFixed(2) + '%</p>')
+            }
+        })
+    }
+    $('.timing').append('<p>使用的浏览器为 ：' + getExplorerInfo().type
+        + '</p>')
+    var str = ''
+    if (isPCBroswer()) {
+        str = 'PC端'
+    } else {
+        str = "移动端"
+    }
+    $('.timing').append(`<p> 载入页面的时间为 : ${dateFormater('YYYY-MM-DD HH:mm', '')}</p> `)
+
+    $('.timing').append('<p>使用设备 ：' + str
+        + '</p>')
+
+    $('.timing').append(`<p> 当前 IP : ${returnCitySN["cip"]}</p> `)
+    $('.timing').append(`<p> 当前地区 : ${returnCitySN["cname"]}</p> `)
+    $('.timing').append(`<p> 区域 ID : ${returnCitySN["cid"]}</p> `)
+
+
+    $('.M_Btn4').click(function () {
+        let arr = $('.M_Ipt4').val()
+        $('.M_Ipt6').val(JSON.parse(arr).includes(Number($('.M_Ipt5').val())))
+    })
+
+    $('.M_Btn5').click(function () {
+        $('.M_Ipt9').val(random($('.M_Ipt7').val(), $('.M_Ipt8').val()))
+    })
+    $('.M_Btn6').click(function () {
+        let arr1 = JSON.parse($('.M_Ipt10').val())
+        $('.M_Ipt11').val(min(arr1))
+    })
+    $('.M_Btn7').click(function () {
+        let arr2 = JSON.parse($('.M_Ipt12').val())
+        $('.M_Ipt13').val(max(arr2))
+    })
+    $('.M_Btn8').click(function () {
+        let arr3 = JSON.parse($('.M_Ipt14').val())
+        $('.M_Ipt15').val(`[${unique(arr3)}]`)
+    })
+    $('.M_Btn9').click(function () {
+        $('.M_Ipt17').val(camelize($('.M_Ipt16').val()))
+    })
+    $('.M_Btn10').click(function () {
+        $('.M_Ipt19').val(hyphenate($('.M_Ipt18').val()))
+    })
+    $('.M_Btn11').click(function () {
+        $('.M_Ipt21').val(capitalize($('.M_Ipt20').val()))
+    })
+
+
+</script>
+
+</html>

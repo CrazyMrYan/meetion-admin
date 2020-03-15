@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../src/meetion.css">
+    <script src="../../src/util/jquery.min3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+
+</head>
+
+<body>
+    <div class="">
+        <div class="M_Breadcrumb_" style="background: #fff;margin-bottom: 15px;">
+            [
+            {"name":"插件","link":"javascript:;"}
+            ,{"name":"树形控件","link":"javascript:;"}
+            ]
+        </div>
+        <p class="M_P_Title" style="margin:10px 0;background: #fff;padding: 15px;"> 树形控件 Tree </p>
+        <div class="Flex">
+            <div class="M_Card" style="width: 50%;">
+                <div style="margin-left: 100px;" class="tree">
+
+                </div>
+                <button class="M_Btn">获取选中数据</button>
+                <code class="Mcode_js">
+                    // var arrs = [1, 34, 35, 48, 5, 6, 7, 8, 9, 10] <br>
+                    // 生成tree的位置 data为tree数据、arrs为选中的id可为空 <br>
+                    // arrs可填可不填 填写需为数组 <br>
+                    // <b>取值</b> <br>
+                    // leg.getCheckedNodes() //选中 <br>
+                    // leg.getHalfSelected() //半选 <br>
+                    // leg.getAll() //全选及半选 <br>
+                </code>
+            </div>
+            <div class="M_Card" style=" flex: 1;margin: 0 20px;">
+                <code class="Mcode_js">
+                        生成tree的位置 data为tree数据、arrs为选中的id可为空<br>
+                        arrs可填可不填 填写需为数组<br>
+                        data数据中的只有name、id、checked、open、ico、children和cascade<br>
+                        其中open为是否展开<br>
+                        所填值 ivu-icon ivu-icon-ios-add-circle 为iview UI<br>
+                        值必须要有所用UI的前缀（不懂可自己去F12把class 里的值全部复制）<br>
+                        cascade为是否子父级联选中（cascade 必须在最高父级中写才生效）<br>
+                        var data = [{<br>
+                            "name": "权限管理",<br>
+                            "open": true,<br>
+                            "id": 999,<br>
+                            "ico": 'iconyonghu',<br>
+                            "checked": false,<br>
+                            "children": [{<br>
+                                "name": "储物柜管理",<br>
+                                "open": true,<br>
+                                "ico": 'iconshezhi',<br>
+                                "id": 99,<br>
+                                "checked": false,<br>
+                                "children": [{<br>
+                                    "name": "储物柜列表",<br>
+                                    "id": 1,<br>
+                                    "ico": 'icon-sousuo',<br>
+                                    "checked": false,<br>
+                                    "open": true,<br>
+                                    "children": [{<br>
+                                        "name": "详情",<br>
+                                        "id": 7,<br>
+                                        "ico": false,<br>
+                                        "checked": true<br>
+                                    },<br>
+                                    {<br>
+                                        "name": "修改价格",<br>
+                                        "id": 43,<br>
+                                        "ico": false,<br>
+                                        "checked": false<br>
+                                    }<br>
+                                    ]<br>
+                                }]<br>
+                            }]<br>
+                        }]<br>
+                </code>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="../../src/meetion.js"></script>
+<script src="../../src/util/leg-tree.js" charset="utf-8"></script>
+<script src="../../src/util/code.js" charset="utf-8"></script>
+
+<script>
+    /*
+    生成tree的位置 data为tree数据、arrs为选中的id可为空
+    arrs可填可不填 填写需为数组
+    data数据中的只有name、id、checked、open、ico、children和cascade
+    其中open为是否展开
+    ico为ico图片 icon-sousuo 例: <i ></i>（因麻烦只添加了3个测试ico）
+    ico 可用自己所使用UI的ico  例：<i ></i>
+    所填值 ivu-icon ivu-icon-ios-add-circle 为iview UI
+    值必须要有所用UI的前缀（不懂可自己去F12把class 里的值全部复制）
+    cascade为是否子父级联选中（cascade 必须在最高父级中写才生效）
+    
+    */
+
+    var data = [{
+        "name": "权限管理",
+        "open": true,
+        "id": 999,
+        "ico": 'iconyonghu',
+        "checked": false,
+        "children": [{
+            "name": "储物柜管理",
+            "open": true,
+            "ico": 'iconshezhi',
+            "id": 99,
+            "checked": false,
+            "children": [{
+                "name": "储物柜列表",
+                "id": 1,
+                "ico": 'icon-sousuo',
+                "checked": false,
+                "open": true,
+                "children": [{
+                    "name": "详情",
+                    "id": 7,
+                    "ico": false,
+                    "checked": true
+                },
+                {
+                    "name": "修改价格",
+                    "id": 43,
+                    "ico": false,
+                    "checked": false
+                }
+                ]
+            },
+            {
+                "name": "计费类型",
+                "id": 36,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": [{
+                    "name": "删除",
+                    "id": 37,
+                    "ico": 'fa fa-times-circle',
+                    "checked": false
+                },
+                {
+                    "name": "提交编辑",
+                    "id": 52,
+                    "ico": false,
+                    "checked": true
+                }
+                ]
+            }
+            ]
+        },
+        {
+            "name": "广告业务",
+            "open": true,
+            "ico": false,
+            "id": 999,
+            "checked": false,
+            "children": [{
+                "name": "广告列表",
+                "id": 22,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": [{
+                    "name": "编辑",
+                    "id": 23,
+                    "ico": false,
+                    "checked": true
+                },
+                {
+                    "name": "添加",
+                    "id": 24,
+                    "ico": false,
+                    "checked": true
+                },
+                {
+                    "name": "删除",
+                    "id": 25,
+                    "ico": false,
+                    "checked": false
+                }
+                ]
+            },
+            {
+                "name": "广告资源",
+                "id": 26,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": [{
+                    "name": "编辑",
+                    "id": 27,
+                    "ico": false,
+                    "checked": true
+                },
+                {
+                    "name": "上传",
+                    "id": 28,
+                    "ico": false,
+                    "checked": true
+                },
+                {
+                    "name": "删除",
+                    "id": 29,
+                    "ico": false,
+                    "checked": false
+                }
+                ]
+            }
+            ]
+        },
+        {
+            "name": "个人中心",
+            "open": true,
+            "ico": false,
+            "checked": false,
+            "children": [{
+                "name": "资料修改",
+                "id": 5,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": []
+            },
+            {
+                "name": "密码修改",
+                "id": 6,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": []
+            },
+            {
+                "name": "资金账户",
+                "id": 41,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": [{
+                    "name": "资金账户绑定微信",
+                    "id": 39,
+                    "ico": false,
+                    "checked": false
+                },
+                {
+                    "name": "资金账户绑定支付宝",
+                    "id": 40,
+                    "ico": false,
+                    "checked": false
+                }
+                ]
+            }
+            ]
+        },
+        {
+            "name": "日志管理",
+            "open": true,
+            "ico": false,
+            "checked": false,
+            "children": [{
+                "name": "错误日志",
+                "id": 30,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": [{
+                    "name": "详情",
+                    "id": 31,
+                    "ico": false,
+                    "checked": false
+                },
+                {
+                    "name": "删除",
+                    "id": 32,
+                    "ico": false,
+                    "checked": false
+                }
+                ]
+            },
+            {
+                "name": "操作日志",
+                "id": 33,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": []
+            }
+            ]
+        },
+        {
+            "name": "消息推送",
+            "open": true,
+            "ico": false,
+            "checked": false,
+            "children": [{
+                "name": "普通消息",
+                "id": 34,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": []
+            },
+            {
+                "name": "图文消息",
+                "id": 35,
+                "ico": false,
+                "checked": false,
+                "open": true,
+                "children": []
+            }
+            ]
+        }
+        ]
+    }];
+
+    var arrs = []
+    // var arrs = [1, 34, 35, 48, 5, 6, 7, 8, 9, 10]
+    // /*
+    // 生成tree的位置 data为tree数据、arrs为选中的id可为空
+    // arrs可填可不填 填写需为数组
+    // data数据中的只有name、id、checked、open、ico、children
+    // 	其中open为是否展开	
+    // */
+    $(".M_Btn").on("click", () => {
+        // alert(leg.getCheckedNodes())//选中
+        console.log(leg.getCheckedNodes())
+        showMessage('结果 ID 打印在控制台', 'warning', 2000);
+        // console.log(leg.getHalfSelected(), '半选')//半选
+        // console.log(leg.getAll(), '全选及半选');//全选及半选
+    })
+    leg.tree({
+        ele: ".tree",//选者
+        data: data,//数据
+        arrs: arrs,//选中的id
+        cascade: true,//级联
+        //			onAsync:true//暂无此
+    });
+</script>
+
+</html>
