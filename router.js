@@ -7,7 +7,7 @@ router.push(
         children:[
             {
                 name:"首页",
-                path:'vivews/home.html',
+                path:'views/home.html',
             }
         ]
     }
@@ -52,7 +52,7 @@ let routerGuard = new RouterWatcher({
     },
     watch:{
         token(newVal,oldVal){
-            location.href = 'vivews/login.html';
+            location.href = 'views/login.html';
         },
         router(newVal,oldVal){
             router = newVal;
@@ -71,7 +71,7 @@ if(localStorage.getItem('token') === 'a66abb5684c45962d887564f08346e8d'){
             
                 {
                     name:"首页",
-                    path:'vivews/home.html',
+                    path:'views/home.html',
                 }
             ]
         },
@@ -81,35 +81,35 @@ if(localStorage.getItem('token') === 'a66abb5684c45962d887564f08346e8d'){
             children:[
                 {
                     name:"卡片",
-                    path:'vivews/assembly/card.html',
+                    path:'views/assembly/card.html',
                 },
                 {
                     name:"折叠面板",
-                    path:'vivews/assembly/folding-panel.html',
+                    path:'views/assembly/folding-panel.html',
                 },
                 {
                     name:"选项卡",
-                    path:'vivews/assembly/tab.html',
+                    path:'views/assembly/tab.html',
                 },
                 {
                     name:"按钮",
-                    path:'vivews/assembly/button.html',
+                    path:'views/assembly/button.html',
                 },
                 {
                     name:"模态框",
-                    path:'vivews/assembly/dialogue.html',
+                    path:'views/assembly/dialogue.html',
                 },
                 {
                     name:"表单元素",
-                    path:'vivews/assembly/input.html',
+                    path:'views/assembly/input.html',
                 },
                 {
                     name:"表格",
-                    path:'vivews/assembly/table.html',
+                    path:'views/assembly/table.html',
                 },
                 {
                     name:"分页",
-                    path:'vivews/assembly/paging.html',
+                    path:'views/assembly/paging.html',
                 }
             ]
         }
@@ -120,11 +120,11 @@ if(localStorage.getItem('token') === 'a66abb5684c45962d887564f08346e8d'){
             children:[
                 {
                     name:"树形控件",
-                    path:'vivews/instrument/tree.html',
+                    path:'views/instrument/tree.html',
                 },
                 {
                     name:"工具函数",
-                    path:'vivews/instrument/util.html',
+                    path:'views/instrument/util.html',
                 },
             ]
         },
@@ -134,28 +134,28 @@ if(localStorage.getItem('token') === 'a66abb5684c45962d887564f08346e8d'){
             children:[
                 {
                     name:"Router",
-                    path:'vivews/System/router.html',
+                    path:'views/System/router.html',
                 },
                 {
                     name:"Request",
-                    path:'vivews/System/request.html',
+                    path:'views/System/request.html',
                 },
                 {
                     name:"Meetion",
-                    path:'vivews/System/meetion.html',
+                    path:'views/System/meetion.html',
                 },
             ]
         }
     ]
 }else if(localStorage.getItem('token')==''|| localStorage.getItem('token') == undefined || localStorage.getItem('token') ==null){
     // 判断非法修改token
-    location.href = 'vivews/login.html';
+    location.href = 'views/login.html';
 } 
 else{
     // routerGuard.router =[ {
     //     name:"首页",
-    //     path:'vivews/home.html',
+    //     path:'views/home.html',
     //     icon:"fa fa-home "
     // }]
-    location.href = 'vivews/login.html';
+    location.href = 'views/login.html';
 }

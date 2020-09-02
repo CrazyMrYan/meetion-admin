@@ -38,12 +38,12 @@
                             router.push(<br>
                                 {<br>
                                     name:"首页",  // name:导航名称;<br>
-                                    path:'vivews/home.html', // path:路径;<br>
+                                    path:'views/home.html', // path:路径;<br>
                                     icon:"fa fa-home "// icon:字体图标;<br>
                                 },<br>
                                 {<br>
                                     name:"table表格",<br>
-                                    path:'vivews/table.html',<br>
+                                    path:'views/table.html',<br>
                                     icon:"fa fa-table"<br>
                                 },<br>
                                 {<br>
@@ -74,7 +74,7 @@
                                     // 当 token 发生变化时 这里会第一时间接受到状态;<br>
                                     token(newVal,oldVal){<br>
                                         // 只要 token 发生改变直接跳转到登录页<br>
-                                        location.href = 'vivews/login.html';<br>
+                                        location.href = 'views/login.html';<br>
                                     },<br>
                                     // 当 router 发生变化时 这里会第一时间接受到状态;<br>
                                     router(newVal,oldVal){<br>
@@ -91,22 +91,22 @@
                             RouterGuard.router = [<br>
                                 {<br>
                                     name:"home 首页",<br>
-                                    path:'vivews/home.html',<br>
+                                    path:'views/home.html',<br>
                                     icon:"fa fa-home "<br>
                                 },<br>
                                 {<br>
                                     name:"table 表格",<br>
-                                    path:'vivews/table.html',<br>
+                                    path:'views/table.html',<br>
                                     icon:"fa fa-table"<br>
                                 },<br>
                                 {<br>
                                     name:"button 按钮",<br>
-                                    path:'vivews/button.html',<br>
+                                    path:'views/button.html',<br>
                                     icon:"fa fa-bandcamp"<br>
                                 }, <br>
                                 {<br>
                                     name:"tool 工具",<br>
-                                    path:'vivews/tool.html',<br>
+                                    path:'views/tool.html',<br>
                                     icon:"fa fa-cogs"<br>
                                 } <br>
                             ]<br>
